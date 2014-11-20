@@ -1,0 +1,50 @@
+
+.menu-izq {
+  position: relative;
+  float: left;
+  background: #f3f6a5;
+  //color: #ffffff;
+  //border: 2px solid #000000;
+  margin-left: 2px;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.cabecera_1{
+    background: #c6c6c6;
+    height: 249px;
+    margin-top: -7px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.cabecera_2{
+    margin-top: 1px;
+    margin-left: 50px
+}
+
+.cabecera_3{
+    color: #fff; 
+    margin-top: 32px;
+}
+.cabecera_31{
+    font-size: 1.4em;
+    color: #f2f0d8;
+    margin-top: 32px;
+    float: right;
+}
+.logo{
+    height:249px;
+    margin-top: 8px;
+}
+
+body {
+    width: 90%;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    margin: auto;
+    height: 100%;
+}
+
+
+
