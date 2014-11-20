@@ -1,0 +1,8 @@
+services:
+#    aac_user.example:
+#        class: Aac\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+    aac_user.registration.form.type:
+        class: Aac\UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: aac_user_registration }

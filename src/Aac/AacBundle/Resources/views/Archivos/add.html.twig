@@ -1,0 +1,72 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+<div class="col-md-12">
+    <div class="col-md-offset-2">
+        <h2>{{ titulo }}</h2>
+    </div>
+    <hr>
+    <form action="#" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        <!-- -->
+        <div class="form-group col-md-offset-1">
+            <label class="col-md-2 control-label text-right">
+                Archivo
+            </label>
+
+                {{ form_widget(form.file,  {'attr': {'autofocus': 'autofocus'}}) }}
+
+        </div>
+        {% if form_errors(form.file) is not empty %}
+            <div class="col-md-10 col-md-offset-4 alert alert-danger">
+                {{ form_errors(form.file) }}
+            </div>
+        {% elseif true %}
+            <div class="col-md-10 col-md-offset-4"></div>                
+        {% endif %}
+        <!-- -->
+        <div class="form-group col-md-offset-1">
+            {{ form_label(form.descripcion, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+
+                {{ form_widget(form.descripcion) }}
+
+        </div>
+        {% if form_errors(form.descripcion) is not empty %}
+            <div class="col-md-10 col-md-offset-4 alert alert-danger">
+                {{ form_errors(form.descripcion) }}
+            </div>
+        {% elseif true %}
+            <div class="col-md-10 col-md-offset-4"></div>                
+        {% endif %}
+        <div class="col-md-12"><br></div>
+        <!-- -->
+        <div class="form-group col-md-offset-1">
+            <label class="col-md-2 control-label text-right">
+                Para
+            </label>
+ 
+            <select class="col-md-4" id="Archivo_para" name="Archivo[para]">
+            {% for listas in lista %}
+                <option value="{{ listas.id }}">{{ listas.nombre }}</option>
+            {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-12"><hr></div>
+        <div class="col-md-12 col-md-offset-2">
+            <button type="submit" name="submit" class="btn btn-success" value="submit">
+                <i class="glyphicon glyphicon-ok glyphicon glyphicon-white"></i>
+                &nbsp;Aceptar
+            </button>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="{{ path('archivos') }}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                &nbsp;&nbsp;Volver
+            </a>
+
+        </div>
+        <div class="col-md-12"><br></div>        
+    </form>
+               
+</div>
+{% endblock %}
+

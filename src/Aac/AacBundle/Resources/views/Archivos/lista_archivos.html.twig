@@ -1,0 +1,69 @@
+{# empty Twig template #}
+{% extends '::layout.html.twig' %}
+{% block body %}
+    {% for type, flashMessage in app.session.flashbag.all() %}
+        <div class="alert alert-{{ type }} fade in">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            {% if flashMessage.title is defined %}
+            <strong>{{ flashMessage.title }}</strong>
+            {{ flashMessage.message }}
+            <audio src="{{asset('bundles/aac/sonidos/' ~ type ~ '.wav')}}" type="audio/wav" autoplay="true">
+            {% else %}
+            {{ type }}
+            {% endif %}
+        </div>
+    {% endfor %}
+    <a name="ancla"></a>
+<div class="col-md-12">
+<h2>{{ titulo }}</h2>
+<hr>
+
+<table class="table table-striped table-bordered table-hover">
+    <tr class="info">
+        <th>Archivo</th>
+        <th>Descripción</th>
+        <th>De</th>
+        <th>Para</th>
+        <th>Fecha</th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acciones</th>
+    </tr>
+    <tbody>
+{% for entity in pagination %}
+            <tr>
+                <td>{{ entity.path |slice(0, 25) }}</td>
+                <td>
+                    <a href="#ancla" name="{{ entity.descripcion }}" 
+                       title='Descripcion del archivo - {{ entity.descripcion }}'  >
+                        {{ entity.descripcion|slice(0, 25) }}
+                    </a>                
+                </td>
+                <td>{{ entity.nombreDe|slice(0, 25) }}</td>
+                <td>{{ entity.nombrePara|slice(0, 25) }}</td>
+                <td>{{ entity.fecha |date("d/m/Y H:i:s") }}</td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;
+                    <a class="glyphicon glyphicon-download-alt" 
+                       download  
+                       href="{{ asset('bundles/aac/archivos/'~ entity.path) }}" 
+                       title='Descargar Archivo -  {{ entity.path }}'></a>
+                    {% if is_granted('ROLE_INTERVENTOR') %}
+                       &nbsp;&nbsp;&nbsp;
+                    <a class="glyphicon glyphicon-trash" 
+                       href="#eliminarUsuario" data-toggle="modal" pagina="1"
+                       id="eliminar" name="{{ entity.path }}" borrar="{{ entity.id }}"
+                       ruta="/eliminar/"
+                       title='Eliminar Archivo - {{ entity.path }}'  ></a>
+                    {% endif %}
+                    &nbsp;&nbsp;&nbsp;
+                    <a class="glyphicon glyphicon-eye-open" 
+                        href="{{ asset('bundles/aac/archivos/'~ entity.path) }}" 
+                        title='Ver Archivo -  {{ entity.path }}' ></a>                
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    <div>
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}

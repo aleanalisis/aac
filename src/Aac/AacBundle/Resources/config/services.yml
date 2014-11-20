@@ -1,0 +1,8 @@
+services:
+#    aac.example:
+#        class: Aac\AacBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+# Libreria My_hash
+    My_Hash:
+        class:        Aac\AacBundle\Helpers\MyHash
+        arguments:    [algoritmo, data, @service_container]

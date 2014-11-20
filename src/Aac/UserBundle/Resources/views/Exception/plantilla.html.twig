@@ -1,0 +1,14 @@
+{% extends "::layout.html.twig" %}
+{% block body %}
+<div class="block-exception">
+            <h1>
+                {{ exception.message|nl2br|format_file_from_text }}
+            </h1>
+
+            <div>
+                <strong>{{ status_code }}</strong> {{ status_text }} - {{ exception.class|abbr_class }}
+            </div>
+        
+    
+</div>
+{% endblock %}

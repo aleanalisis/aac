@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Descargas" table="descargas">
+    <id name="iddescarga" type="integer" column="idDescarga">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombrearchivo" type="string" column="nombreArchivo" length="200" nullable="false"/>
+    <field name="descripcionarchivo" type="string" column="descripcionArchivo" length="200" nullable="false"/>
+    <field name="tipodescarga" type="integer" column="tipoDescarga" nullable="true"/>
+    <field name="para" type="integer" column="para" nullable="false"/>
+    <field name="fecha" type="datetime" column="fecha" nullable="false"/>
+  </entity>
+</doctrine-mapping>

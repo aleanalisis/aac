@@ -1,0 +1,23 @@
+{# empty Twig template #}
+{% block modal %}
+    
+<div class="col-md-12">
+    <div id="{{ modal.id }}" class="modal col-md-6 col-md-offset-3" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
+        <input name="{{ modal.url_base }}" id="aleruta" type="hidden">
+        <div class="modal-header">
+            <h3>{{ modal.message }}</h3>
+        </div>
+        <div>
+            <audio  id="alesonido" src="{{asset('bundles/aac/sonidos/modal.wav')}}" type="audio/wav" >
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+            <a id="alecancel" href="{{ path (modal.href_cancel) }}" class="btn btn-primary" >
+                    Cancelar</a>
+                <a id="paraBorrar" href="{{ path (modal.href_action, { 'id': '0' }) }}" class="btn btn-success">
+                    {{ modal.text_btn }}</a>
+        </div>
+        </div>
+</div>
+                    
+{% endblock %}

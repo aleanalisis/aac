@@ -1,0 +1,125 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+<div class="col-md-12">
+    <div class="col-md-offset-2">
+        <h2>{{ titulo }}</h2>
+    </div>
+
+    <form action="{{ path('usuarios_modificar',  {'id': usuarios.id}) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+        
+        <div class="form-group col-md-offset-1">
+            {{ form_label(form.nombre, null, {'label_attr': {'class': 'col-md-3 control-label text-right'}}) }}
+   
+                {{ form_widget(form.nombre) }}
+
+        </div>
+        {% if form_errors(form.nombre) is not empty %}
+            <div class="col-md-10 col-md-offset-4 alert alert-danger">
+                {{ form_errors(form.nombre) }}
+            </div>
+        {% elseif true %}
+            <div class="col-md-10 col-md-offset-4"></div>                
+        {% endif %}         
+        <div class="form-group col-md-offset-1">
+            {{ form_label(form.usuario, null, {'label_attr': {'class': 'col-md-3 control-label text-right'}}) }}
+
+                {{ form_widget(form.usuario) }}
+
+        </div>
+        {% if form_errors(form.usuario) is not empty %}
+            <div class="col-md-10 col-md-offset-4 alert alert-danger">
+                {{ form_errors(form.usuario) }}
+            </div>
+        {% elseif true %}
+            <div class="col-md-10 col-md-offset-4"></div>                
+        {% endif %}            
+        <!-- -->
+        <div class="form-group col-md-offset-1">
+            {{ form_label(form.email, null, {'label_attr': {'class': 'col-md-3 control-label text-right'}}) }}
+
+                {{ form_widget(form.email) }}
+
+        </div>
+        {% if form_errors(form.email) is not empty %}
+            <div class="col-md-10 col-md-offset-4 alert alert-danger">
+                {{ form_errors(form.email) }}
+            </div>
+        {% elseif true %}
+            <div class="col-md-10 col-md-offset-4"></div>                
+        {% endif %}        
+        <!-- -->
+        <div class="form-group col-md-offset-1">
+            {{ form_label(form.telefono, null, {'label_attr': {'class': 'col-md-3 control-label text-right'}}) }}
+
+                {{ form_widget(form.telefono) }}
+
+        </div>
+        {% if form_errors(form.telefono) is not empty %}
+                <div class="col-md-10 col-md-offset-4 alert alert-danger">
+                    {{ form_errors(form.telefono) }}
+                </div>
+        {% elseif true %}
+            <div class="col-md-10 col-md-offset-4"></div>                
+        {% endif %}        
+        <!-- -->
+        <div class="form-group col-md-offset-1">
+            {{ form_label(form.idRole, null, {'label_attr': {'class': 'col-md-3 control-label text-right'}}) }}
+
+                {{ form_widget(form.idRole) }}
+
+        </div>
+        {% if form_errors(form.idRole) is not empty %}
+                <div class="col-md-10 col-md-offset-4 alert alert-danger">
+                    {{ form_errors(form.idRole) }}
+                </div>
+        {% elseif true %}
+            <div class="col-md-10 col-md-offset-4"></div>                
+        {% endif %}        
+        <br>
+        <!-- -->
+        <div class="form-group col-md-offset-1">
+            {{ form_label(form.estado, null, {'label_attr': {'class': 'col-md-3 control-label text-right'}}) }}
+
+                {{ form_widget(form.estado) }}
+
+        </div>
+        {% if form_errors(form.estado) is not empty %}
+                <div class="col-md-10 col-md-offset-4 alert alert-danger">
+                    {{ form_errors(form.estado) }}
+                </div>
+        {% elseif true %}
+            <div class="col-md-10 col-md-offset-4"></div>                
+        {% endif %}        
+        <!-- -->
+        <div class="form-group col-md-offset-1">
+            {{ form_label(form.duracion, null, {'label_attr': {'class': 'col-md-3 control-label text-right'}}) }}
+            {{ form_widget(form.duracion) }}
+        </div>
+        {% if form_errors(form.duracion) is not empty %}
+                <div class="col-md-10 col-md-offset-4 alert alert-danger">
+                    {{ form_errors(form.duracion) }}
+                </div>
+        {% elseif true %}
+            <div class="col-md-10 col-md-offset-4"></div>                
+        {% endif %}
+        
+        <div class="col-md-12"><hr></div>
+        <div class="col-md-12 col-md-offset-2">
+            <button type="submit" name="submit" class="btn btn-success" value="submit">
+                <i class="glyphicon glyphicon-ok glyphicon glyphicon-white"></i>
+                &nbsp;Aceptar
+            </button>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="{{ path('usuarios') }}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                &nbsp;&nbsp;Volver
+            </a>
+
+        </div>
+<div class="col-md-12"><br></div>        
+    </form>
+               
+</div>
+{% endblock %}

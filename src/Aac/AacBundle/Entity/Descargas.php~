@@ -1,0 +1,185 @@
+<?php
+
+namespace Aac\AacBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Descargas
+ *
+ * @ORM\Table(name="descargas")
+ * @ORM\Entity
+ */
+class Descargas
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idDescarga", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $iddescarga;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombreArchivo", type="string", length=200, nullable=false)
+     */
+    private $nombrearchivo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcionArchivo", type="string", length=200, nullable=false)
+     */
+    private $descripcionarchivo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tipoDescarga", type="integer", nullable=true)
+     */
+    private $tipodescarga;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="para", type="integer", nullable=false)
+     */
+    private $para;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="datetime", nullable=false)
+     */
+    private $fecha;
+
+
+
+    /**
+     * Get iddescarga
+     *
+     * @return integer 
+     */
+    public function getIddescarga()
+    {
+        return $this->iddescarga;
+    }
+
+    /**
+     * Set nombrearchivo
+     *
+     * @param string $nombrearchivo
+     * @return Descargas
+     */
+    public function setNombrearchivo($nombrearchivo)
+    {
+        $this->nombrearchivo = $nombrearchivo;
+
+        return $this;
+    }
+
+    /**
+     * Get nombrearchivo
+     *
+     * @return string 
+     */
+    public function getNombrearchivo()
+    {
+        return $this->nombrearchivo;
+    }
+
+    /**
+     * Set descripcionarchivo
+     *
+     * @param string $descripcionarchivo
+     * @return Descargas
+     */
+    public function setDescripcionarchivo($descripcionarchivo)
+    {
+        $this->descripcionarchivo = $descripcionarchivo;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcionarchivo
+     *
+     * @return string 
+     */
+    public function getDescripcionarchivo()
+    {
+        return $this->descripcionarchivo;
+    }
+
+    /**
+     * Set tipodescarga
+     *
+     * @param integer $tipodescarga
+     * @return Descargas
+     */
+    public function setTipodescarga($tipodescarga)
+    {
+        $this->tipodescarga = $tipodescarga;
+
+        return $this;
+    }
+
+    /**
+     * Get tipodescarga
+     *
+     * @return integer 
+     */
+    public function getTipodescarga()
+    {
+        return $this->tipodescarga;
+    }
+
+    /**
+     * Set para
+     *
+     * @param integer $para
+     * @return Descargas
+     */
+    public function setPara($para)
+    {
+        $this->para = $para;
+
+        return $this;
+    }
+
+    /**
+     * Get para
+     *
+     * @return integer 
+     */
+    public function getPara()
+    {
+        return $this->para;
+    }
+
+    /**
+     * Set fecha
+     *
+     * @param \DateTime $fecha
+     * @return Descargas
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return \DateTime 
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+}

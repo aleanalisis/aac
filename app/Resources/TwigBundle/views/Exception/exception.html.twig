@@ -1,0 +1,15 @@
+<div class="block-exception">
+    <div class="block-exception-detected clear-fix">
+        <div class="text-exception">
+            <h2 style="color: red;">
+            {% if status_code == 403 %} 
+                <strong> {{ status_code }}</strong> Acceso Denegado
+            {% else %}
+
+                <strong> {{ status_code }}</strong> {{ exception.message }}
+            {% endif %}
+                <audio src="{{asset('bundles/aac/sonidos/danger.wav')}}" type="audio/wav" autoplay="true">
+            </h2>
+        </div>
+    </div>
+</div>

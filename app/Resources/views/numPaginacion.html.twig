@@ -1,0 +1,69 @@
+{# empty Twig template #}
+<div class="pagination col-md-offset-1" style="text-align: center;">
+    <ul class="pagination pagination-sm">
+        <?php if (isset($this->first)): ?>
+            <?php if ($this->first != $this->current): ?>
+            <li><a class="pagina" 
+            href="<?php echo $this->url($this->route, array('action'=>$this->action,'pagina' => $this->first)); ?>">
+                    Primera</a></li>
+
+        <?php else: ?>
+<!--
+            <li class="disabled"><span>&Lt;</span></li>
+-->
+            <li class="disabled"><span>Primera</span></li>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <?php if (isset($this->previous)): ?>
+
+            <li><a class="pagina" 
+    href="<?php echo $this->url($this->route, array('action'=>$this->action,'pagina' => $this->previous)); ?>">
+            &lt;</a></li>
+
+        <?php else: ?>
+
+            <li class="disabled"><span>&lt;</span></li>
+
+        <?php endif; ?>
+
+        <?php foreach ($this->pagesInRange as $id): ?>
+
+            <?php if ($id != $this->current): ?>
+                <li>
+                    <a class="pagina"  
+                    href="<?php echo $this->url($this->route, array('action'=>$this->action,'pagina' => $id)); ?>">
+                       <?php echo $id; ?>
+                    </a>
+                </li>
+           <?php else: ?>
+
+                <li class="active"><span><?php echo $id; ?></span></li>
+
+            <?php endif; ?>
+
+        <?php endforeach; ?>
+
+        <?php if (isset($this->next)): ?>
+
+            <li><a class="pagina"  
+        href="<?php echo $this->url($this->route, array('action'=>$this->action,'pagina' => $this->next)); ?>">&gt;</a></li>
+
+        <?php else: ?>
+
+            <li class="disabled"><span>&gt;</span></li>
+
+        <?php endif; ?>
+
+        <?php if (isset($this->last)): ?>
+            <?php if ($this->last != $this->current): ?>
+            <li><a class="pagina"  
+        href="<?php echo $this->url($this->route, array('action'=>$this->action,'pagina' => $this->last)); ?>">Última</a></li>
+
+        <?php else: ?>
+
+            <li class="disabled"><span>Última</span></li>
+            <?php endif; ?>
+        <?php endif; ?>
+    </ul>
+</div>

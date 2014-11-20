@@ -1,0 +1,10 @@
+aac_user:
+    resource: "@AacUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+aac:
+    resource: "@AacBundle/Resources/config/routing.yml"
+    prefix:   /
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"    
+

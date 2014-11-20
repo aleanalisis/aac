@@ -1,0 +1,51 @@
+{# app/Resources/views/layout.html.twig #}
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}Análisis y Auditoría de Cuentas{% endblock %}</title>
+        {% block meta %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {% endblock %}
+        <!-- Estilos -->
+        {% block stylesheets %}
+        <link href="{{ asset('bundles/aac/css/bootstrap.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/aac/css/bootstrap-theme.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/aac/css/style.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/aac/css/modal.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        <!-- Scripts -->
+         {% block javascripts %}
+        <script src="{{ asset('bundles/aac/js/jquery.2.1.1.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/aac/js/bootstrap.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/aac/js/modal.js') }}" type="text/javascript"></script>
+        {% endblock %}
+    </head>
+    <body>
+    {{ include('::menu.html.twig') }}
+    {{ include('::cabecera.html.twig') }}
+        
+    {% block menu %}{% endblock %}
+    
+    {% block contenedor %}{% endblock %}
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+        <div class="alert alert-{{ type }} fade in">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            {{ message }}
+            <audio src="{{asset('bundles/aac/sonidos/' ~ type ~ '.wav')}}" type="audio/wav" autoplay="true">
+        </div>
+        {% endfor %}
+    {% endfor %}    
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+
+    {{ include('::footer.html.twig') }}
+
+    {% block footer %}{% endblock %}
+       
+    </body>
+</html>

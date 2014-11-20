@@ -1,0 +1,395 @@
+<?php
+
+namespace Aac\AacBundle\Entity;
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+
+/**
+ * Usuarios
+ *
+ * @ORM\Table(name="usuarios", indexes={@ORM\Index(name="idRole", columns={"idRole"})})
+ * @ORM\Entity
+ */
+class Usuarios implements UserInterface, \Serializable 
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=200, nullable=false)
+     * @Assert\NotNull(message="El campo nombre no puede estar en blanco.")
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 200,
+     *      minMessage = "El campo Nombre debe tener un mínimo de {{ limit }} caracteres.",
+     *      maxMessage = "El campo Nombre debe tener un máximo de {{ limit }} caracteres."
+     * )
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="usuario", type="string", length=200, nullable=false)
+     * @Assert\NotNull(message="El usuario no puede estar en blanco.")
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 200,
+     *      minMessage = "El campo Usuario debe tener un mínimo de {{ limit }} caracteres.",
+     *      maxMessage = "El campo Usuario debe tener un máximo de {{ limit }} caracteres."
+     * )     
+     */
+    private $usuario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=200, nullable=false)
+     * @Assert\NotNull(message="El email no puede estar en blanco.")
+     * @Assert\Email(
+     *     message = "El campo Email '{{ value }}' es inválido."
+     * )
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=200, nullable=false)
+     */
+  
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono", type="string", length=9, nullable=true)
+     * @Assert\Length(
+     *      min = 9,
+     *      max = 9,
+     *      minMessage = "El telefono debe tener {{ limit }} digitos exactamente.",
+     *      maxMessage = "El telefono debe tener {{ limit }} digitos exactamente."
+     * )
+     */
+    private $telefono;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="estado", type="integer", nullable=false)
+     */
+    private $estado = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="datetime", nullable=false)
+     */
+    private $fecha;
+
+    /**
+     * @var \Role
+     *
+     * @ORM\ManyToOne(targetEntity="Role")
+     *   @ORM\JoinColumn(name="idRole", referencedColumnName="id_role")
+     */
+    private $idrole;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="duracion", type="integer", nullable=false)
+     */
+  
+    private $duracion = 60;
+
+
+    /**
+     * @inheritDoc
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+    
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Usuarios
+     */
+    public function setSalt($salt)
+    {
+        return null;
+    }
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Usuarios
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param string $usuario
+     * @return Usuarios
+     */
+    public function setUsuario($usuario)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return string 
+     */
+    public function getUsername()
+    {
+        return $this->usuario;
+    }
+    /**
+     * Get usuario
+     *
+     * @return string 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Usuarios
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return Usuarios
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param string $telefono
+     * @return Usuarios
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefono
+     *
+     * @return string 
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param boolean $estado
+     * @return Usuarios
+     */
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return boolean 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set fecha
+     *
+     * @param \DateTime $fecha
+     * @return Usuarios
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return \DateTime 
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * Set idrole
+     *
+     * @param \Aac\AacBundle\Entity\Role $idrole
+     * @return Usuarios
+     */
+    public function setIdrole(\Aac\AacBundle\Entity\Role $idrole = null)
+    {
+        $this->idrole = $idrole;
+
+        return $this;
+    }
+
+    /**
+     * Get idrole
+     *
+     * @return \Aac\AacBundle\Entity\Role 
+     */
+    public function getIdrole()
+    {
+        return $this->idrole;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRoles()
+    {
+        return $this->idrole;
+    }    
+    /**
+     * Set duracion
+     *
+     * @param integer $duracion
+     * @return Usuarios
+     */
+    public function setDuracion($duracion)
+    {
+        $this->duracion = $duracion;
+
+        return $this;
+    }
+
+    /**
+     * Get duracion
+     *
+     * @return integer 
+     */
+    public function getduracion()
+    {
+        return $this->duracion;
+    }    
+    
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials()
+    {
+    }
+
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+        ) = unserialize($serialized);
+    }    
+}

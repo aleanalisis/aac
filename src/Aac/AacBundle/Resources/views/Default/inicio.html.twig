@@ -1,0 +1,25 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block body %}
+<h1>Hola desde Inicio</h1>
+    {% for type, flashMessage in app.session.flashbag.all() %}
+        <div class="alert alert-{{ type }} fade in">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            {% if flashMessage.title is defined %}
+            <strong>{{ flashMessage.title }}</strong>
+            <br>
+            {{ flashMessage.message }}
+            <audio src="{{asset('bundles/aac/sonidos/' ~ type ~ '.wav')}}" type="audio/wav" autoplay="true">
+            {% else %}
+            {{ type }}
+            {% endif %}
+        </div>
+    {% endfor %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if app.user.username is defined %}
+<h1>Bienvenido {{ app.user.username }}</h1>
+{% endif %}
+{% endblock fos_user_content %}    
+{% endblock %}

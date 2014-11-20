@@ -1,0 +1,41 @@
+aac/hello:
+    path:     /hello/{name}
+    defaults: { _controller: AacBundle:Default:index }
+aac/inicio:
+    path:     /inicio
+    defaults: { _controller: AacBundle:Default:inicio }
+usuarios:
+    path:     /usuarios
+    defaults: { _controller: AacBundle:Usuarios:index }
+usuarios_add:
+    path:     /usuarios/add
+    defaults: {_controller: AacBundle:Usuarios:add}
+usuarios_modificar:
+    path:     /usuarios/modificar/{id}
+    defaults: {_controller: AacBundle:Usuarios:modificar}
+usuarios_ver:
+    path:     /usuarios/ver/{id}
+    defaults: {_controller: AacBundle:Usuarios:ver}
+usuarios_eliminar:
+    path:     /usuarios/eliminar/{id}
+    defaults: {_controller: AacBundle:Usuarios:eliminar}    
+role:
+    path:     /role
+    defaults: { _controller: AacBundle:Usuarios:index }
+archivos:
+    path:     /archivos
+    defaults: { _controller: AacBundle:Archivo:index }    
+archivos_subir:
+    path:     /archivos/subir
+    defaults: { _controller: AacBundle:Archivo:subir }
+archivos_modificar:
+    path:     /archivos/modificar/{id}
+    defaults: {_controller: AacBundle:Archivo:modificar}
+archivos_ver:
+    path:     /archivos/ver/{id}
+    defaults: {_controller: AacBundle:Archivo:ver}    
+archivos_eliminar:
+    path:     /archivos/eliminar/{id}
+    defaults: {_controller: AacBundle:Archivo:eliminar}
+  
+  
