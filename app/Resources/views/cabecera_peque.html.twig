@@ -1,0 +1,20 @@
+{# empty Twig template #}
+    
+    {% block cabecera %}
+    <div class="cabecera_1" style="height: 94px;" >
+        <div class="col-md-4 logo cabecera_2" style="height: 94px;">
+            <img src="{{ asset('bundles/aac/images/AAC35.png') }}" alt="Análisis y Auditoría de Cuentas" />
+        </div>
+        <div class="col-md-7">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <h4 class="cabecera_3" style="font-family: Algerian Regular; font-weight: bold; font-size: 2.0em; float: left; margin-left: -240px;">Análisis y Auditoría de Cuentas</h4>
+            <img src="{{ asset('bundles/aac/images/foto.menu.left40.png') }}" style="margin-left: 50px; margin-top: 8px;" />
+            <div class="cabecera_31">
+                <span class="glyphicon glyphicon-user"></span>
+                &nbsp;Bienvenid@&nbsp;{{ app.user.username }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endblock %}
+    
