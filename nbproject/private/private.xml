@@ -5,6 +5,8 @@
         <group>
             <file>file:/C:/xampp/htdocs/Symfony/aac/web/app.php</file>
             <file>file:/C:/xampp/htdocs/Symfony/aac/app/config/config.yml</file>
+            <file>file:/C:/xampp/htdocs/Symfony/aac/vendor/friendsofsymfony/user-bundle/Controller/RegistrationController.php</file>
+            <file>file:/C:/xampp/htdocs/Symfony/aac/src/Aac/AacBundle/Resources/config/routing.yml</file>
             <file>file:/C:/xampp/htdocs/Symfony/aac/app/config/security.yml</file>
             <file>file:/C:/xampp/htdocs/Symfony/aac/app/config/parameters.yml</file>
             <file>file:/C:/xampp/htdocs/Symfony/aac/web/app_dev.php</file>
