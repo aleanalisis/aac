@@ -86,6 +86,16 @@ fos_user:
     db_driver: orm 
     firewall_name: main
     user_class: Aac\UserBundle\Entity\User
+    service:
+        mailer: fos_user.mailer.twig_swift
+    resetting:
+        email:
+            template: AacUserBundle:User:resetting.email.html.twig        
     registration:
         form:
             type: aac_user_registration
+        confirmation:
+            enabled:    true
+    from_email:
+        address:        alorenzoesparza@ono.com
+        sender_name:    Aac registro de usuarios            

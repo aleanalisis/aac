@@ -40,7 +40,7 @@ change_password:
 # Registration
 registration:
     check_email: Se ha enviado un email a %email%. Contiene un enlace de activación que debes presionar para activar tu cuenta.
-    confirmed: %username%, y tu cuenta tambíen está confirmada.
+    confirmed: %username%, ahora tu cuenta ya está confirmada.
     back: Volver a la página original.
     submit: Registrar
     flash:
@@ -53,7 +53,7 @@ registration:
             Para completar la validación de tu cuenta - por favor visita %confirmationUrl%
 
             Atentamente,
-            el Equipo.
+            el Equipo de Aac.
 
 # Password resetting
 resetting:
