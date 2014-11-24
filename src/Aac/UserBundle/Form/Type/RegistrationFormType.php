@@ -17,6 +17,11 @@ class RegistrationFormType extends AbstractType
             ->add('telefono', 'text', array(
                 'attr'      => array('class' => 'col-md-2'),
                 'required'  => FALSE,
+            ))
+            ->add('captcha', 'captcha', array(
+                'width' => 200,
+                'height' => 50,
+                'length' => 6,
             ));                
     }
 
