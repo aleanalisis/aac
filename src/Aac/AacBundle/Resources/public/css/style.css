@@ -12,6 +12,7 @@
 
 .cabecera_1{
     background: #c6c6c6;
+    height: 249px;
     margin-top: -7px;
     margin-bottom: 20px;
     width: 100%;
@@ -33,6 +34,7 @@
     float: right;
 }
 .logo{
+    height:249px;
     margin-top: 8px;
 }
 

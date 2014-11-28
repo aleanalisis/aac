@@ -211,8 +211,9 @@ class Archivo
     {
         // se deshace del __DIR__ para no meter la pata
         // al mostrar el documento/imagen cargada en la vista.
-        return 'bundles/aac/archivos';
+        return 'aac/archivos';
     }
+    
 
     /**
      * Sets file.
@@ -262,5 +263,6 @@ class Archivo
 
         // limpia la propiedad «file» ya que no la necesitas más
         $this->file = null;
-    }    
+    }
+   
 }

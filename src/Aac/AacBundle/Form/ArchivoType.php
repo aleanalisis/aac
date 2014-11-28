@@ -14,7 +14,7 @@ class ArchivoType extends AbstractType{
         //print_r($options);exit;
         $builder
             ->add('file', 'file', array(
-                'attr'      => array('class' => 'col-md-4',
+                'attr'      => array('class' => 'col-md-5',
                 'label'     => 'Archivo')
             ))
             ->add('descripcion', 'textarea', array(

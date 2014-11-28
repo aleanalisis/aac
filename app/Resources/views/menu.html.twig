@@ -46,43 +46,46 @@
                                         </a>
                                     </li>                                
                                 </ul> <!-- FIN class="dropdown-menu" -->
-                        
-<!--
-                                <a href="<?php //echo $this->url('usuarios') ?>">
-                                    Usuarios
-                                </a>
--->
                             </li>
                             {% endif %}
                     {% endif %}
                     </ul><!-- FIN nav navbar-nav -->
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            
-                            <a href="{{ path('fos_user_security_logout') }}">
-                                <span class="glyphicon glyphicon-ban-circle"></span>
-                                &nbsp;Cerrar Sesión
-                            </a>
-                        </li>
-                    </ul>
+                    <!-- BOTON CERRAR SESIÓN -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <form class="navbar-form navbar-right" role="form" method="post" 
+                                      action="{{ path('fos_user_security_logout') }}">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-log-out"></span>
+                                    &nbsp;Cerrar Sesión                                
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
                     {% else %}
+                        <!-- BOTON REGISTRARSE -->
                         <ul class="nav navbar-nav navbar-right">
                             <li class="{#<?php echo $this->registro ?>#}">
-                                <a href="{{ path('fos_user_registration_register') }}">
-                                    Registrarse
-                                </a>
+                                <form class="navbar-form navbar-right" role="form" method="post" 
+                                      action="{{ path('fos_user_registration_register') }}">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                    &nbsp;Registrarse                                
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                         <!-- BOTON LOGIN -->
                         <form class="navbar-form navbar-right" role="form" method="post" 
                               action="{{ path('fos_user_security_login') }}">
-                            <button type="submit" class="btn btn-success">Login</button>
+                            <button type="submit" class="btn btn-success btn-sm">
+                               <span class="glyphicon glyphicon-log-in"></span> 
+                               &nbsp; Login
+                            </button>
                         </form>
-                   
                     {% endif %}
                 </div><!--/.nav-collapse -->
-          
             </div>
         </nav>
                        

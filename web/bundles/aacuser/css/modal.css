@@ -1,0 +1,31 @@
+/* 
+    Created on : 09-jul-2014, 3:52:29
+    Author     : Antonio Lorenzo Esparza
+*/
+.divDemoBody  {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+        height: 250px;
+        }
+.divDemoBody p {
+        font-size: 18px;
+        line-height: 140%;
+        padding-top: 12px;
+        }
+.divDialogElements input {
+        font-size: 18px;
+        padding: 3px; 
+        height: 32px; 
+        width: 500px; 
+        }
+.divButton {
+        padding-top: 12px;
+        }
+.modal{
+    margin-top: 250px;
+    height: 330px;
+    background-color: hsla(47, 96%, 100%, 1);
+    opacity: 1;
+}

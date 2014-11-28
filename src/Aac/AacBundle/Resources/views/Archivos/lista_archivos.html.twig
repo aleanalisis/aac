@@ -44,7 +44,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <a class="glyphicon glyphicon-download-alt" 
                        download  
-                       href="{{ asset('bundles/aac/archivos/'~ entity.path) }}" 
+                       href="{{ asset('aac/archivos/'~ entity.path) }}" 
                        title='Descargar Archivo -  {{ entity.path }}'></a>
                     {% if is_granted('ROLE_INTERVENTOR') %}
                        &nbsp;&nbsp;&nbsp;
@@ -56,7 +56,7 @@
                     {% endif %}
                     &nbsp;&nbsp;&nbsp;
                     <a class="glyphicon glyphicon-eye-open" 
-                        href="{{ asset('bundles/aac/archivos/'~ entity.path) }}" 
+                        href="{{ asset('aac/archivos/'~ entity.path) }}" 
                         title='Ver Archivo -  {{ entity.path }}' ></a>                
                 </td>
             </tr>

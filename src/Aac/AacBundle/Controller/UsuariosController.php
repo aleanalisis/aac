@@ -97,7 +97,7 @@ class UsuariosController extends Controller
 
         $editForm->handleRequest($request);
         
-        if ($editForm->isValid()) {
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em->persist($usuarios);
             //$usuarios->setFecha($fecha);
             $usuarios->setPassword($password);

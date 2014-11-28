@@ -35,8 +35,8 @@ class ArchivoController extends Controller{
         $clave = array_search($roleUser['0'], $rolesAceptados);
         
         if ($clave == 0) {
-$repository = $this->getDoctrine()
-    ->getRepository('AacBundle:Archivo');
+            $repository = $this->getDoctrine()
+                ->getRepository('AacBundle:Archivo');
             
 
             $query = $repository->createQueryBuilder('a')
@@ -52,7 +52,13 @@ $repository = $this->getDoctrine()
         }
 
         if (!$archivo) {
-            throw $this->createNotFoundException('No hay Archivos.');
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'message' => 'No existe ningún archivo para este usuario.'
+                )
+            );            
+            return $this->redirect($this->generateUrl('aac/inicio'));
         }
         
         $lista1 = array();
@@ -165,9 +171,8 @@ $repository = $this->getDoctrine()
         
         if ($form->isValid()) {
             $em = $em = $this->getDoctrine()->getEntityManager();
-            
+
             $archivo->upload();
-            
             $em->persist($archivo);
 
             $archivo->setFecha(new \DateTime("now"));

@@ -7,9 +7,9 @@
 $(window).scroll(function(){        
     if ($(this).scrollTop() > 50){        	
         $('#cabecera_1').css('transition','all 300ms');        	
-        $('#cabecera_1 *').css('transition','all 300ms');            
-        $("#cabecera_1 .cabecera_2 .logo-grande").css("display","none");            
-        $("#cabecera_1 .cabecera_2 .logo-peque").css("display","block");
+        $('#cabecera_1').css('transition','all 300ms');            
+        $("#cabecera_1").css("display","none");            
+        $("#cabecera_11").css("display","block");
         $('#cabecera_1 .top-bg').css("border-bottom","2px solid #00B1D7");            
         $('#cabecera_1 .bottom-bg').css("display","none");            
         $('#cabecera_1 #site-title').css("margin-bottom","5px");            
@@ -19,10 +19,11 @@ $(window).scroll(function(){
         $('#cabecera_1 #mainmenu').css("margin-top","0px");           
         $('#cabecera_1 .logo-wrap').css("margin-top","20px");           
         $('#cabecera_1 .social-search').css("margin-top","0px");           
-        $("#cabecera_1 .searchform").hide();        }
+        $(".cabecera_3").hide();        }
     else{            
         $('#cabecera_1').css('box-shadow','none');            
-        $('#cabecera_1 .top-bg').css("border-bottom","10px solid #00B1D7");			
+        $("#cabecera_11").css("display","none");            
+        $("#cabecera_1").css("display","block");			
         $('#cabecera_1 .bottom-bg').css("display","block");			
         $('#cabecera_1 #site-title').css("font-size","39px");			
         $('#cabecera_1 #site-title').css("margin-top","0px");			
@@ -32,7 +33,7 @@ $(window).scroll(function(){
         $('#cabecera_1 #mainmenu').css("margin-top","10px");            
         $('#cabecera_1 .logo-wrap').css("margin-top","25px");            
         $('#cabecera_1 .social-search').css("margin-top","10px");            
-        $("#cabecera_1 .searchform").fadeIn();
+        $(".cabecera_3").fadeIn();
     }
 });        
 $(document).ready(function(){    	
