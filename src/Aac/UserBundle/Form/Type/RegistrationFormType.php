@@ -19,9 +19,10 @@ class RegistrationFormType extends AbstractType
                 'required'  => FALSE,
             ))
             ->add('captcha', 'captcha', array(
-                'width' => 200,
-                'height' => 50,
-                'length' => 6,
+                'width' => 100,
+                'height' => 25,
+                'length' => 5,
+                'quality'=> 100,
             ));                
     }
 

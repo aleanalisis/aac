@@ -14,12 +14,16 @@
         <link href="{{ asset('bundles/aac/css/bootstrap-theme.css') }}" type="text/css" rel="stylesheet" />
         <link href="{{ asset('bundles/aac/css/style.css') }}" type="text/css" rel="stylesheet" />
         <link href="{{ asset('bundles/aac/css/modal.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/aac/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/aac/images/favicon.ico') }}" type="image/ico" rel="shortcut icon" />
         {% endblock %}
         <!-- Scripts -->
          {% block javascripts %}
         <script src="{{ asset('bundles/aac/js/jquery.2.1.1.js') }}" type="text/javascript"></script>
         <script src="{{ asset('bundles/aac/js/bootstrap.js') }}" type="text/javascript"></script>
         <script src="{{ asset('bundles/aac/js/modal.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/aac/js/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/aac/js/locales/bootstrap-datetimepicker.es.js') }}" type="text/javascript"></script>
         {% endblock %}
     </head>
     <body>
@@ -41,6 +45,39 @@
     {% block footer %}{% endblock %}
     {% block modal %}{% endblock %}
     
+    <script type="text/javascript">
+        $('.form_datetime').datetimepicker({
+            language:  'es',
+            weekStart: 1,
+            todayBtn:  1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 2,
+                    forceParse: 0,
+            showMeridian: 1
+        });
+            $('.form_date').datetimepicker({
+            language:  'es',
+            weekStart: 1,
+            todayBtn:  1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 2,
+                    minView: 2,
+                    forceParse: 0
+        });
+            $('.form_time').datetimepicker({
+            language:  'es',
+            weekStart: 1,
+            todayBtn:  1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 1,
+                    minView: 0,
+                    maxView: 1,
+                    forceParse: 0
+        });
+    </script>        
     
     </body>
 </html>

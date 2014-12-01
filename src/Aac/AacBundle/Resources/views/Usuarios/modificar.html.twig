@@ -18,7 +18,7 @@
             {{ form_errors(form.nombre) }}
         </div>
     {% elseif true %}
-        <div class="col-md-10 col-md-offset-4"></div>                
+                        
     {% endif %}
     <!-- FIN nombre -->
     <div class="form-group col-md-offset-1">
@@ -46,7 +46,7 @@
             {{ form_errors(form.email) }}
         </div>
     {% elseif true %}
-        <div class="col-md-10 col-md-offset-4"></div>                
+                        
     {% endif %}
     <!-- FIN email -->
     <div class="form-group col-md-offset-1">
@@ -75,9 +75,45 @@
                 {{ form_errors(form.roles) }}
             </div>
     {% elseif true %}
-        <div class="col-md-10 col-md-offset-4"></div>                
+        <div class="col-md-10 col-md-offset-4"><br></div>                
     {% endif %}        
     <!-- FIN role -->
+    <div class="form-group col-md-offset-1">
+        {{ form_label(form.locked, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+
+            {{ form_widget(form.locked,  {'attr': {'class': 'col-md-2', 
+                                            'name' : "fos_user_registration_form[locked]"}}) }}
+
+    </div>
+    {% if form_errors(form.locked) is not empty %}
+            <div class="col-md-10 col-md-offset-4 alert alert-danger">
+                {{ form_errors(form.locked) }}
+            </div>
+    {% elseif true %}
+                         
+    {% endif %}        
+    <!-- FIN Bloqueado -->
+    <div class="form-group col-md-offset-1">
+        {{ form_label(form.credentialsExpireAt, null, {'label_attr': {'class': 'col-md-2 col-md-offset-1 control-label text-right'}}) }}
+        <br><br><br><br><br><br><br>
+        <div class="input-group date form_date col-md-2"
+            data-link-field="dtp_input2" 
+            data-date-format="dd-mm-yyyy">
+        {{ form_widget(form.credentialsExpireAt,  {'attr': {
+                                'name' : "fos_user_registration_form[credentialsExpireAt]"}}) }}
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span>
+        </div>
+            <input type="hidden" id="dtp_input2" value="" /><br/>
+    </div>
+    {% if form_errors(form.credentialsExpireAt) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.credentialsExpireAt) }}
+        </div>
+    {% elseif true %}
+        <div class="col-md-10 col-md-offset-4"></div>                
+    {% endif %}
+    <!-- FIN credentialsExpireAt -->    
     {{ form_rest(form) }}
         <div class="col-md-12"><hr></div>
         <div class="col-md-12 col-md-offset-2">

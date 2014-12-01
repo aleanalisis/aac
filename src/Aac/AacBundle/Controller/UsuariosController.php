@@ -82,7 +82,7 @@ class UsuariosController extends Controller
     public function modificarAction(Request $request, $id)
     {
         $modal = $this->variablesModal('usuarios');
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $usuarios = $em->getRepository('AacUserBundle:User')->find($id);
 
         if (!$usuarios) {
@@ -123,7 +123,7 @@ class UsuariosController extends Controller
     public function eliminarAction($id){
         
         $modal = $this->variablesModal('usuarios');
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $usuarios = $em->getRepository('AacUserBundle:User')->find($id);
 
         if (!$usuarios) {

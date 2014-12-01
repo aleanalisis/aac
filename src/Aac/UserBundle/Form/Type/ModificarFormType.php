@@ -13,11 +13,26 @@ class ModificarFormType extends AbstractType
         // add your custom field
         $builder
             ->add('nombre', 'text', array(
+                'label' => 'Nombre:',                
                 'attr'      => array('class' => 'col-md-4')
             ))
             ->add('telefono', 'text', array(
+                'label' => 'Teléfono:',                
                 'attr'      => array('class' => 'col-md-2'),
                 'required'  => FALSE,
+            ))
+            ->add('locked','choice', array(
+                'choices'   => array(   '0' => 'Activo', 
+                                        '1' => 'Bloqueado'),
+                'label' => 'Estado:',
+                'required'  => true,
+                'mapped' => true,                    
+            ))
+            ->add('credentialsExpireAt', 'date', array(
+                'widget' => 'single_text',
+                'format' => 'dd-MM-yyyy',
+                'label' => 'Expira el:',
+                'mapped' => true,
             ))                
             ->add('roles', 'choice', array(
                 'choices' => array( 'ROLE_INVITADO'     =>  'ROLE_INVITADO',
@@ -25,7 +40,7 @@ class ModificarFormType extends AbstractType
                                     'ROLE_INTERVENTOR'  =>  'ROLE_INTERVENTOR',
                                     'ROLE_ADMIN'        =>  'ROLE_ADMIN',
                                     ),
-                'label' => 'Roles',
+                'label' => 'Roles:',
                 'expanded' => false,
                 'multiple' => true,
                 'mapped' => true,

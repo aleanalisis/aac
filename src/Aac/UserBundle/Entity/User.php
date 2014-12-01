@@ -45,7 +45,19 @@ class User extends BaseUser
      *      maxMessage = "El telefono debe tener {{ limit }} digitos exactamente."
      * )
      */
-    private $telefono;    
+    private $telefono;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nivel", type="integer", length=1)
+     */
+    private $nivel;
+ 
+    /**
+     * @var \DateTime
+     */
+    protected $credentialsExpireAt;  
 
     public function __construct()
     {
@@ -85,6 +97,11 @@ class User extends BaseUser
     {
         return $this->nombre;
     }
+    
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
+    }    
 
     /**
      * Set telefono
@@ -108,4 +125,39 @@ class User extends BaseUser
     {
         return $this->telefono;
     }
+
+    /**
+     * Set nivel
+     *
+     * @param integer $nivel
+     * @return User
+     */
+    public function setNivel($nivel)
+    {
+        $this->nivel = $nivel;
+
+        return $this;
+    }
+
+    /**
+     * Get nivel
+     *
+     * @return integer 
+     */
+    public function getNivel()
+    {
+        return $this->nivel;
+    }
+
+    /**
+     * @param \DateTime $date
+     *
+     * @return User
+     */
+    public function setCredentialsExpireAt(\DateTime $date = null)
+    {
+        $this->credentialsExpireAt = $date;
+
+        return $this;
+    }    
 }

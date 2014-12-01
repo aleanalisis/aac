@@ -170,7 +170,7 @@ class ArchivoController extends Controller{
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $em = $em = $this->getDoctrine()->getEntityManager();
+            $em = $em = $this->getDoctrine()->getManager();
 
             $archivo->upload();
             $em->persist($archivo);
@@ -193,7 +193,7 @@ class ArchivoController extends Controller{
     public function eliminarAction($id)
     {
         $modal = $this->variablesModal('usuarios');
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $archivo = $em->getRepository('AacBundle:Archivo')->find($id);
         //$nombre = $archivo->getPara()->getNombre();
         //echo '<br>Nombre = ' . $nombre;exit;

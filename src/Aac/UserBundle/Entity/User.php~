@@ -45,7 +45,13 @@ class User extends BaseUser
      *      maxMessage = "El telefono debe tener {{ limit }} digitos exactamente."
      * )
      */
-    private $telefono;    
+    private $telefono;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nivel", type="integer", length=1)
+     */
+    private $nivel;    
 
     public function __construct()
     {

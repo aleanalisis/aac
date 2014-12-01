@@ -14,7 +14,7 @@ class ArchivoRepository extends EntityRepository
 {
     public function findOneByIdJoinedToUsuarios($id)
     {
-        $query = $this->getEntityManager()
+        $query = $this->getManager()
             ->createQuery(
                 'SELECT a, u FROM AacAacBundle:Archivo a
                 JOIN a.para u
@@ -30,7 +30,7 @@ class ArchivoRepository extends EntityRepository
     
     public function findBuscarPorUsuario($idUser)
     {
-        $query = $this->getEntityManager()
+        $query = $this->getManager()
             ->createQueryBuilder('a')
                     ->where('a.de = :de OR a.para = :de OR a.para = :para99')
                     ->setParameter('de',  $idUser)
@@ -45,7 +45,7 @@ class ArchivoRepository extends EntityRepository
     }
     public function findAllOrderedByName()
     {
-        return $this->getEntityManager()
+        return $this->getManager()
             ->createQuery(
                 'SELECT p FROM AacAacBundle:Archivo p ORDER BY p.descripcion ASC'
             )
