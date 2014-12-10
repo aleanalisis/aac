@@ -53,9 +53,6 @@ Class EmailController extends Controller
         $servicios = $this->get('Servicios');
         $user = $this->getUser();
 
-        //$csrf_provider = $this->container->get('form.csrf_provider');
-        //$csrfToken = $csrf_provider->generateCsrfToken('');
-        //print_r($csrfToken);exit;
         $usuarios = $this->getDoctrine()->getRepository('AacUserBundle:User')->find($id);
                
         if (!$usuarios) {
@@ -93,8 +90,8 @@ Class EmailController extends Controller
             $email->setMasivo(false);
             
             $em->flush();
+            
             // Recuperar el servicio EmailsServicio
-           
             $envioTo = array($usuarios->getEmail()   => $usuarios->getUsername());
             $enviarEmail = $this->get('EmailsServicio');
             $enviarEmail->envioEmails($data, $user->getEmail(), $envioTo);
@@ -112,12 +109,13 @@ Class EmailController extends Controller
         $parametros['form'] = $form->createView();        
         $parametros['modal'] = $servicios->modalUsuario();
         $parametros['titulo'] = 'Enviar Email a : ' . $usuarios->getNombre();
+        
         return $this->render('AacBundle:Email:enviar.html.twig', $parametros);
     }
 
-    public function seleccionAction(Request $request)
+    public function seleccionAction(Request $request, $activo)
     {
-
+        
         $servicios = $this->get('Servicios');
         $nombreArchivoTo = __DIR__.'/../Resources/doc/SeleccionTo.txt';
         $nombreArchivoId = __DIR__.'/../Resources/doc/SeleccionId.txt';        
@@ -155,8 +153,8 @@ Class EmailController extends Controller
             );            
             return $this->redirect($this->generateUrl('aac/inicio'));
         }
-        
-        $parametros['checked'] = 'checked';
+
+        $parametros['activo'] = $activo;
         $parametros['entities'] = $usuarios;
         $parametros['modal'] = $servicios->modalUsuario();
         $parametros['titulo'] = 'Selección de usuarios para enviar Email';
@@ -166,9 +164,19 @@ Class EmailController extends Controller
     
     public function textoAction(Request $request)
     {
+        
         $servicios = $this->get('Servicios');
         $user = $this->getUser();
-        
+        if (count($_POST <= 1)){
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'ERROR! NO HAY USUARIOS SELECCIONADOS',
+                    'message' => ''
+                )
+            );
+            return $this->redirect($this->generateUrl('enviar_email_todos', array('activo' => '1')));            
+        }
         $nombreArchivoTo = __DIR__.'/../Resources/doc/SeleccionTo.txt';
         $nombreArchivoId = __DIR__.'/../Resources/doc/SeleccionId.txt';
         
@@ -186,7 +194,6 @@ Class EmailController extends Controller
         }else{
             $this->crearEnvioTo();
         }
-        
         if (file_exists($nombreArchivoId)) {
             $file = fopen($nombreArchivoId, "r");
             while(!feof($file)) {
@@ -197,10 +204,6 @@ Class EmailController extends Controller
             
             $this->crearIdTo();
         }        
-        
-        //$csrf_provider = $this->container->get('form.csrf_provider');
-        //$csrfToken = $csrf_provider->generateCsrfToken('');
-        //print_r($csrfToken);exit;
 
         $email = new Email();
         $email->setDe($user->getEmail());
@@ -220,7 +223,7 @@ Class EmailController extends Controller
                 $data->setEnviado(true);
                 $data->setMasivo(true);
                 $em->persist($email);
-                //$email = new Email();
+
                 $email->setDe($user->getId());
                 $email->setPara($ids);
                 
@@ -238,12 +241,10 @@ Class EmailController extends Controller
                 
                 $em = $this->getDoctrine()->getManager();
 
-                //$em->flush();
+                $em->flush();
             }
             
             // Recuperar el servicio EmailsServicio
-           
-            //var_dump($envioTo);exit;
             $enviarEmail = $this->get('EmailsServicio');
             $enviarEmail->envioEmails($data, $user->getEmail(), $envioTo);
 
@@ -267,6 +268,7 @@ Class EmailController extends Controller
     {
         // Crear archivo con el array que contiene 
         // el Email y el username a enviar
+        var_dump(count($_POST));exit;
         if (count($_POST) > 1) {
             $user = $this->getUser();
             $nivelUser = $user->getNivel();

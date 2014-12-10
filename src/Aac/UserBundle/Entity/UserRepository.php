@@ -12,14 +12,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
-   
     public function buscarPorNivel($nivel)
     {
         return $this->_em->createQuery('SELECT u FROM AacUserBundle:User u '
-                . 'WHERE u.nivel <= :nivel '
+                . 'WHERE u.nivel <= :nivel AND u.enabled = :enabled '
                 . 'ORDER BY u.id ASC')
                 ->setParameter('nivel', $nivel)
+                ->setParameter('enabled', 1)
                 ->getResult();        
-
     }
+   
+    public function buscarBloqueados()
+    {
+        return $this->_em->createQuery('SELECT u FROM AacUserBundle:User u '
+                . 'WHERE u.enabled = :enabled '
+                . 'ORDER BY u.id ASC')
+                ->setParameter('enabled', 0)
+                ->getResult();        
+    }    
 }

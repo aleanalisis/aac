@@ -58,7 +58,52 @@ class UsuariosController extends Controller
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $usuarios,
-            $this->get('request')->query->get('page', 1),4
+            $this->get('request')->query->get('page', 1),5
+        );        
+        
+        $parametros['entities'] = $usuarios;
+        $parametros['pagination'] = $pagination;
+        $parametros['modal'] = $servicios->modalUsuario();
+
+        $parametros['titulo'] = 'Usuarios en activo';
+        return $this->render('AacBundle:Usuarios:lista_usuarios.html.twig', $parametros);
+    }
+
+    public function bloqueadosAction() {
+
+        $servicios = $this->get('Servicios');
+       
+        if (false === $this->get('security.context')->isGranted('ROLE_INTERVENTOR')){
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'NO AUTORIZADO!',
+                    'message' => 'No estás autorizado para entrar en esta sección'
+                )
+            );            
+            $parametros['modal'] = $servicios->modalUsuario();
+            return $this->render('AacBundle:Default:index.html.twig', $parametros);
+        }
+        $user = $this->getUser();
+        $nivelUser = $user->getNivel();
+        
+        $usuarios = $this->getDoctrine()->getRepository('AacUserBundle:User')->buscarBloqueados();
+        
+        if (!$usuarios) {
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'ERROR! No hay usuarios para mostrar.',
+                )
+            );            
+            return $this->redirect($this->generateUrl('aac/inicio'));
+        }
+        
+        // Añadimos el paginador (En este caso el parámetro "1" es la página actual, y parámetro "10" es el número de páginas a mostrar)
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $usuarios,
+            $this->get('request')->query->get('page', 1),5
         );        
         
         $parametros['entities'] = $usuarios;

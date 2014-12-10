@@ -56,7 +56,7 @@ class ArchivoController extends Controller{
         $lista = $this->crearLista($lista1);
         
         // Añadimos el paginador (En este caso el parámetro "1" es la página actual, 
-        // y parámetro "10" es el número de páginas a mostrar)
+        // y parámetro "5" es el número de páginas a mostrar)
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
              $lista,
@@ -124,6 +124,7 @@ class ArchivoController extends Controller{
         }
      
         $parametros['form'] = $form->createView();
+        $parametros['lista'] = $lista;
         $parametros['modal'] = $servicios->modalArchivo();
         $parametros['titulo'] = 'Subir Archivos';
         return $this->render('AacBundle:Archivos:add.html.twig', $parametros);        

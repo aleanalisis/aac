@@ -9,6 +9,9 @@ aac/inicio:
 usuarios:
     path:     /usuarios
     defaults: { _controller: AacBundle:Usuarios:index }
+usuarios_bloqueados:
+    path:     /usuarios/bloqueados
+    defaults: {_controller: AacBundle:Usuarios:bloqueados}    
 usuarios_add:
     path:     /usuarios/add
     defaults: {_controller: AacBundle:Usuarios:add}
@@ -42,7 +45,7 @@ enviar_email:
     path:     /email/enviar/{id}
     defaults: {_controller: AacBundle:Email:enviar}
 enviar_email_todos:
-    path:     /email/seleccion
+    path:     /email/seleccion/{activo}
     defaults: {_controller: AacBundle:Email:seleccion}
 email_texto:
     path:     /email/texto

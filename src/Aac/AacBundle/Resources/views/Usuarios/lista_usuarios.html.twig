@@ -16,7 +16,7 @@
 
     <h2>{{ titulo }}</h2>
 
-    <a class="navbar-form navbar-right"  href="{{ path('enviar_email_todos') }}">
+    <a class="navbar-form navbar-right"  href="{{ path('enviar_email_todos', { 'activo': '1' }) }}">
         <span class="glyphicon glyphicon-envelope text-right"></span>
         Enviar E-mail para todos los usuarios
         <br>
