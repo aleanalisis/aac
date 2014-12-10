@@ -12,43 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArchivoRepository extends EntityRepository
 {
-    public function findOneByIdJoinedToUsuarios($id)
-    {
-        $query = $this->getManager()
-            ->createQuery(
-                'SELECT a, u FROM AacAacBundle:Archivo a
-                JOIN a.para u
-                WHERE a.para = :id'
-            )->setParameter('id', $id);
-
-        try {
-            return $query->getSingleResult();
-        } catch (\Doctrine\ORM\NoResultException $e) {
-            return null;
-        }
-    }
-    
+   
     public function findBuscarPorUsuario($idUser)
     {
-        $query = $this->getManager()
-            ->createQueryBuilder('a')
-                    ->where('a.de = :de OR a.para = :de OR a.para = :para99')
-                    ->setParameter('de',  $idUser)
-                    //->setParameter('de1', $idUser)
-                    ->setParameter('para99', 99999)
-                    ->getQuery();
-        try {
-            return $query->getResult();
-        } catch (\Doctrine\ORM\NoResultException $e) {
-            return null;
-        }
+        return $this->_em->createQuery('SELECT a FROM AacBundle:Archivo a '
+                . 'WHERE a.de = :de '
+                . 'OR a.para = :de '
+                . 'OR a.para = :para9 '
+                . 'ORDER BY a.id ASC')
+                ->setParameter('de', $idUser)
+                ->setParameter('para9', '99999')
+                ->getResult();        
+
     }
-    public function findAllOrderedByName()
-    {
-        return $this->getManager()
-            ->createQuery(
-                'SELECT p FROM AacAacBundle:Archivo p ORDER BY p.descripcion ASC'
-            )
-            ->getResult();
-    }    
 }

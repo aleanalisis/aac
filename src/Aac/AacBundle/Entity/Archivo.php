@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Archivo
  *
  * @ORM\Table(name="archivo")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Aac\AacBundle\Entity\ArchivoRepository")
  */
 class Archivo
 {
@@ -244,7 +244,7 @@ class Archivo
 
         // aquí usa el nombre de archivo original pero lo debes
         // sanear al menos para evitar cualquier problema de seguridad
-        $caracteres = array('!', '@', '#', '$', '%', '&', '-', ' ');
+        $caracteres = array('?', '¿', '!', '¡', '@', '#', '$', '%', '&', '-', ',', '/', '\\', ' ');
         $archivo = str_replace($caracteres, "_", $this->getFile()->getClientOriginalName());
         $caracteres = array('á', 'Á', 'é', 'É', 'í', 'Í', 'ó', 'Ó', 'ú', 'Ú');
         $reemplazar = array('a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U');

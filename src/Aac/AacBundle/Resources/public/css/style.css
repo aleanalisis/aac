@@ -45,6 +45,9 @@ body {
     margin: auto;
     height: 100%;
 }
+tr.gris {
+    background-color: #a9a9a9;
+}
 
 
 

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Aac\UserBundle\Entity\UserRepository")
  * @ORM\Table(name="fos_user")
  */
 class User extends BaseUser
@@ -53,7 +53,12 @@ class User extends BaseUser
      * @ORM\Column(name="nivel", type="integer", length=1)
      */
     private $nivel;
- 
+
+    /**
+     * 
+     */
+    private $enviarEmail;
+    
     /**
      * @var \DateTime
      */
@@ -159,5 +164,24 @@ class User extends BaseUser
         $this->credentialsExpireAt = $date;
 
         return $this;
+    }
+    /**
+     * Sets enviarEmail.
+     *
+     * @param boolean $enviarEmail
+     */
+    public function setEnviarEmail(Boolean $enviarEmail = null)
+    {
+        $this->enviarEmail = $enviarEmail;
+    }
+
+    /**
+     * Get enviarEmail.
+     *
+     * @return boolean
+     */
+    public function getEnviarEmail()
+    {
+        return $this->enviarEmail;
     }    
 }

@@ -3,6 +3,10 @@ services:
 #        class: Aac\AacBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
 # Libreria My_hash
-    My_Hash:
-        class:        Aac\AacBundle\Helpers\MyHash
-        arguments:    [algoritmo, data, @service_container]
+    Servicios:
+        class:      Aac\AacBundle\Servicios\Servicios
+        arguments:  [algoritmo, data, @service_container]
+    EmailsServicio:
+        class:      Aac\AacBundle\Servicios\EmailsServicio
+        arguments:  [@service_container]
+

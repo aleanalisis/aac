@@ -1,9 +1,11 @@
+# Controlador Default
 aac/hello:
     path:     /hello/{name}
     defaults: { _controller: AacBundle:Default:index }
 aac/inicio:
     path:     /inicio
     defaults: { _controller: AacBundle:Default:inicio }
+# Controlador Usuarios    
 usuarios:
     path:     /usuarios
     defaults: { _controller: AacBundle:Usuarios:index }
@@ -18,10 +20,8 @@ usuarios_ver:
     defaults: {_controller: AacBundle:Usuarios:ver}
 usuarios_eliminar:
     path:     /usuarios/eliminar/{id}
-    defaults: {_controller: AacBundle:Usuarios:eliminar}    
-role:
-    path:     /role
-    defaults: { _controller: AacBundle:Usuarios:index }
+    defaults: {_controller: AacBundle:Usuarios:eliminar}
+# Controlador Archivos    
 archivos:
     path:     /archivos
     defaults: { _controller: AacBundle:Archivo:index }    
@@ -37,5 +37,19 @@ archivos_ver:
 archivos_eliminar:
     path:     /archivos/eliminar/{id}
     defaults: {_controller: AacBundle:Archivo:eliminar}
-  
-  
+# Controlador Email
+enviar_email:
+    path:     /email/enviar/{id}
+    defaults: {_controller: AacBundle:Email:enviar}
+enviar_email_todos:
+    path:     /email/seleccion
+    defaults: {_controller: AacBundle:Email:seleccion}
+email_texto:
+    path:     /email/texto
+    defaults: {_controller: AacBundle:Email:texto}
+lista_email:
+    path:     /email/listado/{id}
+    defaults: {_controller: AacBundle:Email:lista}    
+ver_email:
+    path:     /email/{id}
+    defaults: {_controller: AacBundle:Email:index}    

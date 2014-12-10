@@ -1,0 +1,80 @@
+{% extends '::layout_peque.html.twig' %}
+
+{% block body %}
+<div class="col-md-12">
+    <div class="col-md-offset-2">
+        <h2>{{ titulo }}</h2>
+    </div>
+    <hr>
+    <form action="#" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+    <div class="form-group col-md-offset-1">
+        {{ form_label(form.de) }}
+
+            {{ form_widget(form.de) }}
+    </div>
+    {% if form_errors(form.de) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.de) }}
+        </div>
+    {% elseif true %}
+        <div class="col-md-10 col-md-offset-4"></div>                
+    {% endif %}
+    <!-- FIN de -->
+        <div class="form-group col-md-offset-1">
+        {{ form_label(form.asunto) }}
+
+            {{ form_widget(form.asunto) }}
+    </div>
+    {% if form_errors(form.asunto) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.asunto) }}
+        </div>
+    {% elseif true %}
+        <div class="col-md-10 col-md-offset-4"></div>
+    {% endif %}
+    <!-- FIN asunto -->
+        <div class="form-group col-md-offset-1">
+        {{ form_label(form.cabecera) }}
+
+            {{ form_widget(form.cabecera) }}
+    </div>
+    {% if form_errors(form.cabecera) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.cabecera) }}
+        </div>
+    {% elseif true %}
+        <div class="col-md-10 col-md-offset-4"></div>              
+    {% endif %}
+    <!-- FIN cabecera -->    
+        <div class="form-group col-md-offset-1">
+        {{ form_label(form.texto) }}
+
+            {{ form_widget(form.texto) }}
+    </div>
+    {% if form_errors(form.texto) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.texto) }}
+        </div>
+    {% elseif true %}
+        <div class="col-md-10 col-md-offset-4"></div>                
+    {% endif %}
+    <!-- FIN texto -->    
+        <div class="col-md-12"><hr></div>
+        <div class="col-md-12 col-md-offset-2">
+            <button type="submit" name="submit" class="btn btn-success" value="submit">
+                <i class="glyphicon glyphicon-ok glyphicon glyphicon-white"></i>
+                &nbsp;Aceptar
+            </button>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="{{ path('enviar_email_todos') }}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                &nbsp;&nbsp;Volver
+            </a>
+
+        </div>
+<div class="col-md-12"><br></div>        
+    </form>
+               
+</div>
+{% endblock %}

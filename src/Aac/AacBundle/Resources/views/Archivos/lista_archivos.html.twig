@@ -19,14 +19,16 @@
 <hr>
 
 <table class="table table-striped table-bordered table-hover">
-    <tr class="info">
-        <th>Archivo</th>
-        <th>Descripción</th>
-        <th>De</th>
-        <th>Para</th>
-        <th>Fecha</th>
-        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acciones</th>
-    </tr>
+    <thead>
+        <tr class="gris">
+            <th>Archivo</th>
+            <th>Descripción</th>
+            <th>De</th>
+            <th>Para</th>
+            <th>Fecha</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Acciones</th>
+        </tr>
+    </thead>
     <tbody>
 {% for entity in pagination %}
             <tr>
@@ -49,7 +51,7 @@
                     {% if is_granted('ROLE_INTERVENTOR') %}
                        &nbsp;&nbsp;&nbsp;
                     <a class="glyphicon glyphicon-trash" 
-                       href="#eliminarUsuario" data-toggle="modal" pagina="1"
+                       href="#eliminarRegistro" data-toggle="modal" pagina="1"
                        id="eliminar" name="{{ entity.path }}" borrar="{{ entity.id }}"
                        ruta="/eliminar/"
                        title='Eliminar Archivo - {{ entity.path }}'  ></a>

@@ -1,0 +1,59 @@
+{# empty Twig template #}
+{% extends '::layout_peque.html.twig' %}
+{% block body %}
+    {% for type, flashMessage in app.session.flashbag.all() %}
+        <div class="alert alert-{{ type }} fade in">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            {% if flashMessage.title is defined %}
+            <strong>{{ flashMessage.title }}</strong>
+            {{ flashMessage.message }}
+            <audio src="{{asset('bundles/aac/sonidos/' ~ type ~ '.wav')}}" type="audio/wav" autoplay="true">
+            {% else %}
+            {{ type }}
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <h2>{{ titulo }}</h2>
+
+<form  role="form" action="{{ path("email_texto") }}" method="post" name="form">
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr class="gris">
+            <th class="text-center">id</th>
+            <th class="col-md-4">Nombre</th>
+            <th class="col-md-4">Usuario</th>
+            <th class="col-md-4">Correo</th>
+            <th class="col-md-1 text-center">Selección</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td class="text-center">{{ entity.id }}</td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.username }}</td>
+                <td>{{ entity.email }}</td>
+                <td class="text-center">{{ entity.enviarEmail }}
+                    <input type="checkbox" name="{{ entity.id }}[]" value="{{ entity.id }}" checked="checked">
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+        <div class="col-md-12"><hr></div>
+        <div class="col-md-12 col-md-offset-2">
+            <button type="submit" name="submit[]" class="btn btn-success" value="submit">
+                <i class="glyphicon glyphicon-ok glyphicon glyphicon-white"></i>
+                &nbsp;Aceptar
+            </button>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="{{ path('enviar_email_todos') }}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                &nbsp;&nbsp;Volver
+            </a>
+
+        </div>
+        <div class="col-md-12"><br></div>
+</form>
+{% endblock %}

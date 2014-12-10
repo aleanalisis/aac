@@ -11,8 +11,8 @@ jQuery(document).ready(function() {
         var pagina =   $( this ).attr( 'pagina' );
         var nombre =   $( this ).attr( 'name' );
         var ruta   =   $( this ).attr( 'ruta' );
-
-        $('#eliminarUsuario').show(function () {
+        
+        $('#eliminarRegistro').show(function () {
             var hrefCancel = $("#alecancel").attr('href');
             $("#alecancel").attr('href', hrefCancel);
             $("#paraBorrar").attr('href', jsVar + ruta + borrar);

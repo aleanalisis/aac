@@ -23,10 +23,11 @@ use Aac\UserBundle\Form\Type\ModificarFormType;
  */
 class UsuariosController extends Controller
 {
-    public function indexAction() {
-    
-        $modal = $this->variablesModal('usuarios');
 
+    public function indexAction() {
+
+        $servicios = $this->get('Servicios');
+       
         if (false === $this->get('security.context')->isGranted('ROLE_INTERVENTOR')){
             $this->get('session')->getFlashBag()->set(
                 'danger',
@@ -35,14 +36,22 @@ class UsuariosController extends Controller
                     'message' => 'No estás autorizado para entrar en esta sección'
                 )
             );            
-            $parametros['modal'] = $modal;
+            $parametros['modal'] = $servicios->modalUsuario();
             return $this->render('AacBundle:Default:index.html.twig', $parametros);
         }
+        $user = $this->getUser();
+        $nivelUser = $user->getNivel();
         
-        $usuarios = $this->getDoctrine()->getRepository('AacUserBundle:User')->findAll();
-
+        $usuarios = $this->getDoctrine()->getRepository('AacUserBundle:User')->buscarPorNivel($nivelUser);
+        
         if (!$usuarios) {
-            throw $this->createNotFoundException('No hay Usuarios.');
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'ERROR! No hay usuarios para mostrar.',
+                )
+            );            
+            return $this->redirect($this->generateUrl('aac/inicio'));
         }
         
         // Añadimos el paginador (En este caso el parámetro "1" es la página actual, y parámetro "10" es el número de páginas a mostrar)
@@ -54,7 +63,7 @@ class UsuariosController extends Controller
         
         $parametros['entities'] = $usuarios;
         $parametros['pagination'] = $pagination;
-        $parametros['modal'] = $modal;
+        $parametros['modal'] = $servicios->modalUsuario();
 
         $parametros['titulo'] = 'Usuarios en activo';
         return $this->render('AacBundle:Usuarios:lista_usuarios.html.twig', $parametros);
@@ -62,11 +71,31 @@ class UsuariosController extends Controller
     
     public function verAction($id)
     {
-        $modal = $this->variablesModal('usuarios');
+        $servicios = $this->get('Servicios');
+        
+        if (false === $this->get('security.context')->isGranted('ROLE_INTERVENTOR')){
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'NO AUTORIZADO!',
+                    'message' => 'No estás autorizado para entrar en esta sección'
+                )
+            );            
+            $parametros['modal'] = $servicios->modalUsuario();
+            return $this->render('AacBundle:Default:index.html.twig', $parametros);
+        }
+        
         $usuarios = $this->getDoctrine()->getRepository('AacUserBundle:User')->find($id);
 
         if (!$usuarios) {
-            throw $this->createNotFoundException('El Usuario - ' . $id . ' - no existe.');
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'ERROR! USUARIO INEXISTENTE',
+                    'message' => 'El Usuario ha ver no existe.'
+                )
+            );            
+            return $this->redirect($this->generateUrl('fos_user_security_logout'));            
         }
         $roles = $usuarios->getRoles();
         $form = $this->createForm(new ModificarFormType(), $usuarios);
@@ -74,19 +103,39 @@ class UsuariosController extends Controller
         $parametros['form'] = $form->createView();
         $parametros['usuarios'] = $usuarios;
         $parametros['titulo'] = 'Detalle de Usuarios';
-        $parametros['modal'] = $modal;
+        $parametros['modal'] = $servicios->modalUsuario();
         
         return $this->render('AacBundle:Usuarios:ver.html.twig', $parametros);        
     }
     
     public function modificarAction(Request $request, $id)
     {
-        $modal = $this->variablesModal('usuarios');
+        $servicios = $this->get('Servicios');
+
+        if (false === $this->get('security.context')->isGranted('ROLE_INTERVENTOR')){
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'NO AUTORIZADO!',
+                    'message' => 'No estás autorizado para entrar en esta sección'
+                )
+            );            
+            $parametros['modal'] = $servicios->modalUsuario();
+            return $this->render('AacBundle:Default:index.html.twig', $parametros);
+        }
+        
         $em = $this->getDoctrine()->getManager();
         $usuarios = $em->getRepository('AacUserBundle:User')->find($id);
 
         if (!$usuarios) {
-            throw $this->createNotFoundException('El Usuario - ' . $id . ' - no existe.');
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'ERROR! USUARIO INEXISTENTE',
+                    'message' => 'El Usuario ha ver no existe.'
+                )
+            );            
+            return $this->redirect($this->generateUrl('fos_user_security_logout'));
         }
         
         //$fecha = $usuarios->getFecha();
@@ -106,7 +155,7 @@ class UsuariosController extends Controller
                 'success',
                 array(
                     'title' => 'Modificado!',
-                    'message' => 'Usuario actualizado satisfactoriamente.'
+                    'message' => 'El Usuario "' . $usuarios->getUsername() . '" ha sido actualizado satisfactoriamente.'
                 )
             );            
             return $this->redirect($this->generateUrl('usuarios'));
@@ -115,14 +164,13 @@ class UsuariosController extends Controller
         $parametros['form'] = $editForm->createView();
         $parametros['usuarios'] = $usuarios;
         $parametros['titulo'] = 'Modificación de Usuarios';
-        $parametros['modal'] = $modal;
+        $parametros['modal'] = $servicios->modalUsuario();
         
         return $this->render('AacBundle:Usuarios:modificar.html.twig', $parametros);
     }
     
     public function eliminarAction($id){
         
-        $modal = $this->variablesModal('usuarios');
         $em = $this->getDoctrine()->getManager();
         $usuarios = $em->getRepository('AacUserBundle:User')->find($id);
 
@@ -144,27 +192,10 @@ class UsuariosController extends Controller
             'success',
             array(
                 'title' => 'ELIMINADO!',
-                'message' => 'El Usuario ha sido eliminado satisfactoriamente.'
+                'message' => 'El Usuario "' . $usuarios->getUsername() . '" ha sido eliminado satisfactoriamente.'
             )
         );
 
         return $this->redirect($this->generateUrl('usuarios'));        
     }
-    
-    public function variablesModal($activo){
-
-        //$this->layout()->setVariable($activo, 'active');
-
-        //$url = $this->getRequest()->getBaseUrl();
-
-        $modal['id'] = 'eliminarUsuario';
-        $modal['message'] = '¿ Realmente desea eliminar este registro ?';
-        $modal['href_cancel'] = 'usuarios';
-        $modal['href_action'] = 'usuarios_eliminar';
-        $modal['param'] = '';
-        $modal['text_btn'] = 'Eliminar';
-        $modal['url_base'] = '/usuarios';
-
-        return $modal;
-    }    
 }

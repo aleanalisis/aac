@@ -1,0 +1,94 @@
+{% extends '::layout_peque.html.twig' %}
+
+{% block body %}
+<div class="col-md-12">
+    <div class="col-md-offset-2">
+        <h2>{{ titulo }}</h2>
+    </div>
+    <hr>
+    <form action="#" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+    <div class="form-group col-md-offset-1">
+        {{ form_label(form.de, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+
+            {{ form_widget(form.de,  {'attr': {'class': 'col-md-3'}}) }}
+    </div>
+    {% if form_errors(form.de) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.de) }}
+        </div>
+    {% elseif true %}
+                        
+    {% endif %}
+    <!-- FIN nombre -->
+    <div class="form-group col-md-offset-1">
+        {{ form_label(form.para, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+
+            {{ form_widget(form.para,  {'attr': {'class': 'col-md-3'}}) }}
+    </div>
+    {% if form_errors(form.para) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.para) }}
+        </div>
+    {% elseif true %}
+        <div class="col-md-10 col-md-offset-4"></div>                
+    {% endif %}
+    <!-- FIN username -->
+        <div class="form-group col-md-offset-1">
+        {{ form_label(form.asunto, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+
+            {{ form_widget(form.asunto,  {'attr': {'class': 'col-md-3'}}) }}
+    </div>
+    {% if form_errors(form.asunto) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.asunto) }}
+        </div>
+    {% elseif true %}
+        <div class="col-md-10 col-md-offset-4"></div>
+    {% endif %}
+    <!-- FIN email -->
+        <div class="form-group col-md-offset-1">
+        {{ form_label(form.cabecera, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+
+            {{ form_widget(form.cabecera,  {'attr': {'class': 'col-md-3'}}) }}
+    </div>
+    {% if form_errors(form.cabecera) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.cabecera) }}
+        </div>
+    {% elseif true %}
+       <div class="col-md-10 col-md-offset-4"></div>                 
+    {% endif %}
+    <!-- FIN email -->    
+        <div class="form-group col-md-offset-1">
+        {{ form_label(form.texto, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+
+            {{ form_widget(form.texto,  {'attr': {'class': 'col-md-3'}}) }}
+    </div>
+    {% if form_errors(form.texto) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.texto) }}
+        </div>
+    {% elseif true %}
+                        
+    {% endif %}
+    <!-- FIN email -->    
+    {{ form_rest(form) }}
+        <div class="col-md-12"><hr></div>
+        <div class="col-md-12 col-md-offset-2">
+            <button type="submit" name="submit" class="btn btn-success" value="submit">
+                <i class="glyphicon glyphicon-ok glyphicon glyphicon-white"></i>
+                &nbsp;Aceptar
+            </button>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="{{ path('usuarios') }}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                &nbsp;&nbsp;Volver
+            </a>
+
+        </div>
+<div class="col-md-12"><br></div>        
+    </form>
+               
+</div>
+{% endblock %}
