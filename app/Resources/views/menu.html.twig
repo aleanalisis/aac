@@ -9,18 +9,16 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ path('aac/inicio') }}">
-                        <img src="{{asset('bundles/aac/images/Analisis05.png')}}" alt="Análisis y Auditoría de Cuentas"/>
-                        &nbsp;Análisis y Auditoría de Cuentas
+                        <img src="{{asset('bundles/aac/images/Analisis05.png')}}" alt="Análisis y Auditoria de Cuentas"/>
+                        &nbsp;Análisis y Auditoria de Cuentas
                     </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        
-                        <li class="{#<?php echo $this->inicio ?>#}"><a href="{#<?php echo $this->url('inicio') ?>#}">{#<?php echo $this->translate('Home') ?>#}</a></li>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         {% if is_granted('ROLE_REGISTRADO') %}
                             
-                            <li class="dropdown {#<?php echo $this->usuarios ?>#}">
+                            <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 Usuarios 
                                 <span class="caret"></span>
@@ -28,7 +26,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                 {% if is_granted('ROLE_INTERVENTOR') %}                                    
                                     <li class="">
-                                        <a href="{{ path('usuarios') }}">
+                                        <a href="{{ path('usuarios_entrada') }}">
                                             Usuarios en Activo
                                         </a>
                                     </li>
@@ -85,11 +83,54 @@
                             </button>
                         </form>
                     {% endif %}
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% if is_granted('ROLE_INTERVENTOR') %}
+                        <ul class="nav navbar-nav">                        
+                        <li class="">
+                            <a href="{{ path('contacto_lista') }}">
+                                Contactos 
+                            </a>
+                        </li>
+                        </ul>
+                        {% endif %} <!--  Fin ROLE_INTERVENTOR -->
+                    {% else %}
+                        <ul class="nav navbar-nav navbar-right">                        
+                            <li class="">
+                                <a href="{{ path('contacto') }}">
+                                    Contacto 
+                                </a>
+                            </li>
+                        </ul>                        
+                    {% endif %}
+                    <ul class="nav navbar-nav navbar-right">                        
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Servicios
+                                <span class="caret"></span>
+                            </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="">
+                                        <a href="{{ path('aac/servicios/profesionales') }}">
+                                            Auditorias
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('aac/servicios/voluntarios') }}">
+                                            Auditorias Voluntarias
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('aac/otros/servicios') }}">
+                                            Otros Servicios 
+                                        </a>
+                                    </li>                                
+                                </ul> <!-- FIN class="dropdown-menu" -->
+                        </li>
+                    </ul>
+
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
-                       
-        
     {% endblock %}
     
 

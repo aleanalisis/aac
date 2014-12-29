@@ -1,0 +1,87 @@
+{# empty Twig template #}
+
+{% block body_seleccionar %}
+    {% for type, flashMessage in app.session.flashbag.all() %}
+        <div class="alert alert-{{ type }} fade in">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            {% if flashMessage.title is defined %}
+            <strong>{{ flashMessage.title }}</strong>
+            {{ flashMessage.message }}
+            <audio src="{{asset('bundles/aac/sonidos/' ~ type ~ '.wav')}}" type="audio/wav" autoplay="true">
+            {% else %}
+            {{ type }}
+            {% endif %}
+        </div>
+    {% endfor %}
+    <div id="seleccionado" style="display: none;">
+
+<h3>Seleccionar opciones</h3>
+<form action="{{ path('usuarios') }}" method="post" class=" form-inline">
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr class="grisclaro">
+            <th>Estado de Usuario</th>
+            <th>Fecha expiración</th>
+            <th>Ordenar por</th>
+            <th>Asc/Desc</th>
+            <th>Aceptar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <input type="radio" name="activo" value="1" checked>&nbsp;Activo&nbsp;|&nbsp;
+                <input type="radio" name="activo" value="0">&nbsp;Bloqueado 
+            </td>
+            <td>
+                <div class="form-group">
+                    <div class="input-group date form_date"
+                    data-link-field="dtp_input2" 
+                    data-date-format="dd-mm-yyyy">
+                    <input class="form-control" type="date" id="fecha_desde" 
+                           name="fecha_desde" placeholder="Desde Fecha">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span>                    
+                    <input type="hidden" id="dtp_input2" value="" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group date form_date"
+                    data-link-field="dtp_input2" 
+                    data-date-format="dd-mm-yyyy">
+                    <input class="form-control" type="date" id="fecha_hasta"
+                           name="fecha_hasta" placeholder="Hasta Fecha">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span>                    
+                    <input type="hidden" id="dtp_input2" value="" />
+                    </div>
+                </div>        
+            </td>
+            <td>    
+                <select class="form-control" id="ordenar_por" name="ordenar_por">
+                    <option value="id" selected>Por Id</option>
+                    <option value="empresa">Por Empresa</option>
+                    <option value="nombre">Por Nombre</option>
+                    <option value="username">Por Usuario</option>
+                    <option value="credentialsExpireAt">Fecha Expir.</option>
+                </select>
+            </td>
+            <td>    
+                <select class="form-control" id="tipoOrden" name="tipoOrden">
+                    <option value="ASC" selected>Ascendente</option>
+                    <option value="DESC">Descendente</option>
+                </select>
+            </td>
+            <td>
+                <button type="submit" name="submit" value="submit" class="btn btn-default btn-sm">
+                   <span class="glyphicon glyphicon-ok-sign"></span> 
+                   &nbsp;Aceptar
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</form>    
+    <hr>
+</div>    
+{% endblock %}

@@ -1,3 +1,19 @@
+body {
+    background: rgb(188,3,37); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(188,3,37,1) 0%, rgba(71,0,10,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(188,3,37,1)), color-stop(100%,rgba(71,0,10,1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(188,3,37,1) 0%,rgba(71,0,10,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(188,3,37,1) 0%,rgba(71,0,10,1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(188,3,37,1) 0%,rgba(71,0,10,1) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  rgba(188,3,37,1) 0%,rgba(71,0,10,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bc0325', endColorstr='#47000a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    color: #fff;
+    width: 90%;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    margin: auto;
+    height: 100%;
+}
 
 .menu-izq {
   position: relative;
@@ -18,6 +34,13 @@
     width: 100%;
 }
 
+.cabecera_11{
+    background: #c6c6c6;
+    height: 94px;
+    margin-top: -7px;
+    margin-bottom: 20px;
+    width: 100%;
+}
 .cabecera_2{
     margin-top: 1px;
     margin-left: 50px
@@ -25,6 +48,9 @@
 
 .cabecera_3{
     color: #fff; 
+    font-family: Almendra;
+    font-style: italic;
+    font-weight: 700;    
     margin-top: 32px;
 }
 .cabecera_31{
@@ -33,21 +59,138 @@
     margin-top: 32px;
     float: right;
 }
+.cabecera_32{
+    color: #fff;
+    font-family: Alegreya;
+    font-weight: 700;    
+    font-weight: bold; 
+    font-size: 2.0em; 
+    float: left; 
+    margin-left: -20px;
+    margin-top: 32px;
+}
 .logo{
     height:249px;
     margin-top: 8px;
 }
+.logo1{
+    height:94px;
+    margin-top: 8px;
+}
+.panel-footer{
+    background: rgb(242,242,242); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(242,242,242,1) 0%, rgba(163,163,163,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(242,242,242,1)), color-stop(100%,rgba(163,163,163,1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(242,242,242,1) 0%,rgba(163,163,163,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(242,242,242,1) 0%,rgba(163,163,163,1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(242,242,242,1) 0%,rgba(163,163,163,1) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  rgba(242,242,242,1) 0%,rgba(163,163,163,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#a3a3a3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    color: #031599;    
+    font-family: Alegreya;
+    font-weight: 700;    
+    font-size: 1.4em;
+    font-weight: bold;
+}
 
-body {
-    width: 90%;
-    padding-top: 60px;
-    padding-bottom: 40px;
-    margin: auto;
-    height: 100%;
+// Tablas correcciones Bootstrap
+.table .table {
+  background-color: #c11a1f;
+}
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #710003;
+}
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+    color: #ffffff;
+    background-color: #a90000;
+}
+.table > tbody > tr > .active,
+.table > tbody > .active > td,
+.table > tbody > .active > th {
+    background-color: #c11a1f;
 }
 tr.gris {
     background-color: #a9a9a9;
 }
+tr.grisclaro{
+    background-color: #e2e2e2;    
+}
 
+.iniciorotar{
+    
+    animation-name: iniciorotar;-webkit-animation-name: iniciorotar;
+    animation-timing-function: linear;-webkit-animation-timing-function: linear;
+    animation-iteration-count: 2;-webkit-animation-iteration-count: 2;
+    animation-duration: 10s;-webkit-animation-duration: 10s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+}
+@keyframes iniciorotar {
+  from {
+    -moz-transform: rotate3d(0, 1, 0, 0deg);
+  }
+  to {
+    
+    -moz-transform: rotate3d(0, 1, 0, -360deg);
+  }
+  
+}
 
+@-webkit-keyframes iniciorotar {
+  from {
+    -webkit-transform: rotate3d(0, 1, 0, 0deg);
+  }
+  to {
+    -webkit-transform: rotate3d(0, 1, 0, -360deg);
+  }
+    
+}
+#servicios_cabecera{
+    //color: #9c0e1b;
+    color: #e7e7e7;
+    font-family: Almendra;
+    font-style: italic;
+    font-weight: 700;    
+    font-size: 3.0em;
+    font-weight: bold; 
+    text-align: center;
 
+}
+
+#servicios{
+    font-family: Almendra;
+    font-style: italic;
+    font-weight: 700;
+    font-weight: bold;
+    height: 700px;
+    background: rgb(242,242,242); /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  rgba(242,242,242,1) 0%, rgba(119,119,119,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(242,242,242,1)), color-stop(100%,rgba(119,119,119,1))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  rgba(242,242,242,1) 0%,rgba(119,119,119,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  rgba(242,242,242,1) 0%,rgba(119,119,119,1) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  rgba(242,242,242,1) 0%,rgba(119,119,119,1) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  rgba(242,242,242,1) 0%,rgba(119,119,119,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#777777',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+#servicios ul, #servicios ol, #servicios p{
+    color: #9c0e1b;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
+}
+
+#servicios ol{
+    list-style-type: lower-alpha;
+    margin-left: 25px;
+    text-align: justify;
+}
+
+#servicios p{
+    margin-left: 10px;
+}
+
+  

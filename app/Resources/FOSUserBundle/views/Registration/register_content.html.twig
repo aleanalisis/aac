@@ -6,9 +6,23 @@
     <hr>
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
     <div class="form-group col-md-offset-1">
+        {{ form_label(form.empresa, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}:
+
+            {{ form_widget(form.empresa,  {'attr': {'autofocus': 'autofocus', 'class': 'col-md-3', 
+                                            'name' : "fos_user_registration_form[empresa]"}}) }}
+    </div>
+    {% if form_errors(form.empresa) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.empresa) }}
+        </div>
+    {% elseif true %}
+        <div class="col-md-10 col-md-offset-4"></div>                
+    {% endif %}
+    <!-- FIN empresa -->
+    <div class="form-group col-md-offset-1">
         {{ form_label(form.nombre, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}:
 
-            {{ form_widget(form.nombre,  {'attr': {'autofocus': 'autofocus', 'class': 'col-md-3', 
+            {{ form_widget(form.nombre,  {'attr': {'class': 'col-md-3', 
                                             'name' : "fos_user_registration_form[nombre]"}}) }}
     </div>
     {% if form_errors(form.nombre) is not empty %}
@@ -18,7 +32,7 @@
     {% elseif true %}
         <div class="col-md-10 col-md-offset-4"></div>                
     {% endif %}
-    <!-- FIN nombre -->
+    <!-- FIN nombre -->    
     <div class="form-group col-md-offset-1">
         {{ form_label(form.username, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
 

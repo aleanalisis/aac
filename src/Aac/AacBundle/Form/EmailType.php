@@ -11,6 +11,13 @@ class EmailType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         // ->add('nombre del campo', 'tipo de campo', array con las opciones)
+        $disabled = false;
+        if (array_key_exists('empty_data', $options)) {
+            if($options['empty_data'] == 'ver'){
+                $disabled = true;
+            }
+        }
+        
         $builder
             ->add('de', 'text', array(
                 'attr'          =>  array('class' => 'col-md-3',
@@ -28,6 +35,7 @@ class EmailType extends AbstractType{
             ))
             ->add('asunto', 'text', array(
                 'attr'          =>  array('class' => 'col-md-4',
+                'disabled'      =>  $disabled,
                 'autofocus'     =>  'autofocus'    
                 ),
                 'label_attr'    =>  array('class' => 'col-md-2 control-label text-right'),
@@ -35,11 +43,13 @@ class EmailType extends AbstractType{
             ))
             ->add('cabecera', 'textarea', array(
                 'attr'          =>  array('class' => 'col-md-5'),
+                'disabled'      =>  $disabled,
                 'label_attr'    =>  array('class' => 'col-md-2 control-label text-right'),
                 'label'         =>  'Cabecera : '                
             ))
             ->add('texto', 'textarea', array(
                 'attr'          =>  array('class' => 'col-md-5',
+                'disabled'      =>  $disabled,
                 'rows'          =>  8,    
                 ),
                 'label_attr'    =>  array('class' => 'col-md-2 control-label text-right'),

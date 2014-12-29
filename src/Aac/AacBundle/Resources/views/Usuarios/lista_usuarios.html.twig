@@ -1,36 +1,33 @@
 {# empty Twig template #}
-{% extends '::layout_peque.html.twig' %}
+{% extends '::layout_seleccionar.html.twig' %}
 {% block body %}
-    {% for type, flashMessage in app.session.flashbag.all() %}
-        <div class="alert alert-{{ type }} fade in">
-            <button class="close" data-dismiss="alert" type="button">×</button>
-            {% if flashMessage.title is defined %}
-            <strong>{{ flashMessage.title }}</strong>
-            {{ flashMessage.message }}
-            <audio src="{{asset('bundles/aac/sonidos/' ~ type ~ '.wav')}}" type="audio/wav" autoplay="true">
-            {% else %}
-            {{ type }}
-            {% endif %}
-        </div>
-    {% endfor %}
-
     <h2>{{ titulo }}</h2>
-
+    <a id="idseleccionar" class="navbar-form navbar-left"  href="#">
+        <!-- Tiene instrucciones en archivo funciones.js -->
+        <span id="seleccionadoInsertado" class="glyphicon glyphicon-folder-open text-left"></span>
+         &nbsp;Criterios de selección
+    </a>
+    
+    <a id="idseleccionar" class="navbar-form navbar-left"  href="{{ path('usuarios_entrada') }}">
+        <!-- Tiene instrucciones en archivo funciones.js -->
+        <span id="seleccionadoInsertado" class="glyphicon glyphicon-remove text-center"></span>
+         &nbsp;Borrar criterios de selección
+    </a>        
+    
     <a class="navbar-form navbar-right"  href="{{ path('enviar_email_todos', { 'activo': '1' }) }}">
         <span class="glyphicon glyphicon-envelope text-right"></span>
         Enviar E-mail para todos los usuarios
         <br>
     </a>
-
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr class="gris">
-            <th>id</th>
+            <th class="text-center">id</th>
+            <th>Empresa</th>
             <th>Nombre</th>
             <th>Correo</th>
-            <th>Teléfono</th>
-            <th>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <th class="text-center">Teléfono</th>
+            <th class="text-center">
                 Acciones
             </th>
         </tr>
@@ -38,11 +35,12 @@
     <tbody>
         {% for entity in pagination %}
             <tr>
-                <td>{{ entity.id }}</td>
-                <td>{{ entity.nombre }}</td>
-                <td>{{ entity.email }}</td>
-                <td>{{ entity.telefono }}</td>
-                <td>
+                <td class="text-center">{{ entity.id }}</td>
+                <td>{{ entity.empresa|slice(0, 30) }}</td>
+                <td>{{ entity.nombre|slice(0, 25) }}</td>
+                <td>{{ entity.email|slice(0, 25) }}</td>
+                <td class="text-center">{{ entity.telefono }}</td>
+                <td class="text-center">
                     &nbsp;&nbsp;&nbsp;
                     <a class="glyphicon glyphicon-edit" 
                         href="{{ path('usuarios_modificar', { 'id': entity.id }) }}" 
@@ -78,4 +76,6 @@
     <div>
         {{ knp_pagination_render(pagination) }}
     </div>
+{{ include('::modal.html.twig') }}
+{% block modal %}{% endblock %}        
 {% endblock %}

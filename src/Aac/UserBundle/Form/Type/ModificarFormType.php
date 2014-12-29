@@ -10,8 +10,22 @@ class ModificarFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        if($options['empty_data'] == '9'){
+           $arrRole = array('ROLE_INVITADO'     =>  'ROLE_INVITADO',
+                                    'ROLE_REGISTRADO'   =>  'ROLE_REGISTRADO',
+                                    'ROLE_INTERVENTOR'  =>  'ROLE_INTERVENTOR',
+                                    'ROLE_ADMIN'        =>  'ROLE_ADMIN');
+        }else{
+           $arrRole = array('ROLE_INVITADO'     =>  'ROLE_INVITADO',
+                                    'ROLE_REGISTRADO'   =>  'ROLE_REGISTRADO',
+                                    'ROLE_INTERVENTOR'  =>  'ROLE_INTERVENTOR');
+        }
         // add your custom field
         $builder
+            ->add('empresa', 'text', array(
+                'label' => 'Empresa:',                
+                'attr'      => array('class' => 'col-md-4')
+            ))                
             ->add('nombre', 'text', array(
                 'label' => 'Nombre:',                
                 'attr'      => array('class' => 'col-md-4')
@@ -35,11 +49,7 @@ class ModificarFormType extends AbstractType
                 'mapped' => true,
             ))                
             ->add('roles', 'choice', array(
-                'choices' => array( 'ROLE_INVITADO'     =>  'ROLE_INVITADO',
-                                    'ROLE_REGISTRADO'   =>  'ROLE_REGISTRADO',
-                                    'ROLE_INTERVENTOR'  =>  'ROLE_INTERVENTOR',
-                                    'ROLE_ADMIN'        =>  'ROLE_ADMIN',
-                                    ),
+                'choices' => $arrRole,
                 'label' => 'Roles:',
                 'expanded' => false,
                 'multiple' => true,

@@ -1,0 +1,56 @@
+{% extends "::layout_peque.html.twig" %}
+{% block body %}
+
+    {% for type, flashMessage in app.session.flashbag.all() %}
+        <div class="alert alert-{{ type }} fade in">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            {% if flashMessage.title is defined %}
+            <strong>{{ flashMessage.title }}</strong>
+            <br>
+            {{ flashMessage.message }}
+            <audio src="{{asset('bundles/aac/sonidos/' ~ type ~ '.wav')}}" type="audio/wav" autoplay="true">
+            {% else %}
+            {{ type }}
+            {% endif %}
+        </div>
+    {% endfor %}
+        <div id="servicios_cabecera">
+            Auditoria Voluntaria de Cuentas
+        </div>
+        <div class="col-md-12">
+        <hr>
+        </div>    
+        <div id="servicios" class="col-md-8 col-md-offset-2">
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Algunas de las circunstancias 
+            en las que podría ser aconsejable o necesario someter a la empresa a una auditoria voluntaria:
+        </p>            
+            <ol>    
+                <li>) Por ser un instrumento garante ante las 
+                Entidades Crediticias.
+                </li>
+                <br>
+                <li>) En aquellos casos en que las empresas 
+                de carácter familiar o no, y que estén administradas por uno de sus miembros, como 
+                soporte para éste de su actuación.
+                </li>
+                <br>
+                <li>) Cuando el grupo familiar o la representación 
+                    del capital así lo estime, como garantía de la gestión administradora. 
+                </li>
+                <br>
+                <li>) Por considerarse conveniente, tanto por 
+                el grupo de socios o accionistas, el que sea un Auditor independiente el que establezca 
+                las normas de control necesarias, en evitación de fraudes y otras actuaciones anormales.
+                </li>
+                <br>
+                <li>) Proporcionar asesoramiento en procedimientos de organización y 
+                    sistemas de control.
+                </li>
+                <br>
+                <li>) Servir de punto de partida en las negociaciones 
+                    para la compra-venta de acciones o participaciones de la Empresa.
+                </li>
+            </ol>
+    </div>
+    
+{% endblock %}

@@ -12,4 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class EmailRepository extends EntityRepository
 {
+    public function findBuscarPorUsuario($idUser)
+    {
+        return $this->_em->createQuery('SELECT e FROM AacBundle:email e '
+                . 'WHERE e.para = :para '
+                . 'ORDER BY e.id ASC')
+                ->setParameter('para', $idUser)
+                ->getResult();        
+
+    }
 }

@@ -1,0 +1,56 @@
+{% extends '::layout_peque.html.twig' %}
+
+{% block body %}
+<div class="col-md-12">
+    <div class="col-md-offset-2">
+        <h2>{{ titulo }}</h2>
+    </div>
+    <hr>
+    <form action="#" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+    <div class="form-group col-md-offset-1">
+        {{ form_label(form.de) }}
+
+            {{ form_widget(form.de) }}
+    </div>
+    <!-- FIN de -->
+    <div class="form-group col-md-offset-1">
+        {{ form_label(form.para) }}
+
+            {{ form_widget(form.para) }}
+    </div>
+    <div class="col-md-10 col-md-offset-4"></div>
+    <!-- FIN para -->
+        <div class="form-group col-md-offset-1">
+        {{ form_label(form.asunto) }}
+
+            {{ form_widget(form.asunto) }}
+    </div>
+    <div class="col-md-10 col-md-offset-4"></div>    
+    <!-- FIN asunto -->
+        <div class="form-group col-md-offset-1">
+        {{ form_label(form.cabecera) }}
+
+            {{ form_widget(form.cabecera) }}
+    </div>
+    <div class="col-md-10 col-md-offset-4"></div>    
+    <!-- FIN cabecera -->    
+        <div class="form-group col-md-offset-1">
+        {{ form_label(form.texto) }}
+
+            {{ form_widget(form.texto) }}
+    </div>
+    <!-- FIN texto -->    
+        <div class="col-md-12"><hr></div>
+        <div class="col-md-12 col-md-offset-2">
+            &nbsp;&nbsp;
+            <a href="{{ path('lista_email', { 'id': para }) }}" class="btn btn-primary">
+                <span class="glyphicon glyphicon-arrow-left"></span>
+                &nbsp;&nbsp;Volver
+            </a>
+        </div>
+<div class="col-md-12"><br></div>        
+    </form>
+               
+</div>
+{% endblock %}

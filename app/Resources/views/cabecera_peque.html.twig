@@ -1,17 +1,17 @@
 {# empty Twig template #}
     
     {% block cabecera %}
-    <div class="cabecera_1" style="height: 94px;" >
-        <div class="col-md-4 logo cabecera_2" style="height: 94px;">
-            <img class="img-responsive" src="{{ asset('bundles/aac/images/AAC35.png') }}" alt="Análisis y Auditoría de Cuentas" />
+    <div class="cabecera_11" style="height: 94px;" >
+        <div id="rotar" class="col-md-2 logo1 cabecera_2" style="height: 94px;">
+            <img src="{{ asset('bundles/aac/images/AAC_35.png') }}" />
         </div>
-        <div class="col-md-7 col-sm-11">
+        <div class="col-md-9 col-sm-11">
+            
+            <h4 class="cabecera_32 col-md-offset-2">Análisis y Auditoria de Cuentas</h4>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <h4 class="cabecera_3" style="font-family: Algerian Regular; font-weight: bold; font-size: 2.0em; float: left; margin-left: -240px;">Análisis y Auditoría de Cuentas</h4>
-            {# <img class="img-responsive" src="{{ asset('bundles/aac/images/foto.menu.left40.png') }}" style="margin-left: 50px; margin-top: 8px;" /> #}
-            <div class="cabecera_31">
+            <div class="cabecera_31 text-right peque">
                 <span class="glyphicon glyphicon-user"></span>
-                &nbsp;Bienvenid@&nbsp;{{ app.user.username }}
+                &nbsp{{ app.user.username|slice(0, 35) }}
             </div>
             {% endif %}
         </div>

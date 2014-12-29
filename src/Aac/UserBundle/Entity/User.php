@@ -64,6 +64,20 @@ class User extends BaseUser
      */
     protected $credentialsExpireAt;  
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="empresa", type="string", length=255, nullable=false)
+     * @Assert\NotNull(message="El campo empresa no puede estar en blanco.")
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 200,
+     *      minMessage = "El campo Empresa debe tener un mínimo de {{ limit }} caracteres.",
+     *      maxMessage = "El campo Empresa debe tener un máximo de {{ limit }} caracteres."
+     * )
+     */
+    private $empresa;
+    
     public function __construct()
     {
         parent::__construct();
@@ -183,5 +197,28 @@ class User extends BaseUser
     public function getEnviarEmail()
     {
         return $this->enviarEmail;
+    }
+
+    /**
+     * Set empresa
+     *
+     * @param string $empresa
+     * @return User
+     */
+    public function setEmpresa($empresa)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return string 
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
     }    
 }

@@ -1,0 +1,49 @@
+{% extends "::layout_peque.html.twig" %}
+{% block body %}
+
+    {% for type, flashMessage in app.session.flashbag.all() %}
+        <div class="alert alert-{{ type }} fade in">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            {% if flashMessage.title is defined %}
+            <strong>{{ flashMessage.title }}</strong>
+            <br>
+            {{ flashMessage.message }}
+            <audio src="{{asset('bundles/aac/sonidos/' ~ type ~ '.wav')}}" type="audio/wav" autoplay="true">
+            {% else %}
+            {{ type }}
+            {% endif %}
+        </div>
+    {% endfor %}
+        <div id="servicios_cabecera">
+            Servicios Profesionales de Auditoria
+        </div>
+        <div class="col-md-12">
+        <hr>
+        </div>    
+    <div id="servicios" class="col-md-8 col-md-offset-2">
+        
+        <ul>
+            <li>Auditorias obligatorias de Cuentas Anuales, establecidas por la legislación mercantil.</li>
+            <li>Auditorias voluntarias de Cuentas Anuales.</li>
+            <li>Informes para la Comisión Nacional del Mercado de Valores.</li>
+            <li>Informes Especiales sobre Emisión de Obligaciones convertibles.</li>
+            <li>Informes Especiales sobre Valoración de Acciones o Participaciones.</li>
+            <li>Informes Especiales sobre Exclusión del Derecho de Suscripción Preferente.</li>
+            <li>Informes Especiales sobre Aumento de Capital por Compensación de Créditos.</li>
+            <li>Informes Especiales sobre Aumento de Capital con cargo a Reservas.</li>
+            <li>Informes Especiales sobre aportaciones no dinerarias.</li>
+            <li>Informes Especiales de Adquisición de Bienes a título oneroso en los dos años 
+                siguientes inmediatos a la comnstitución.</li>
+            <li>Informes Especiales sobre Proyectos y Balances de Fusión, Absorción o Escisión de Empresas.</li>
+            <li>Informes Especiales de las Cuentas Consolidadas.</li>
+            <li>Informes sobre Transformación de Sociedades y Cambio de Objeto Social.</li>
+            <li>Informes sobre Reducción de Capital para Compensación de Perdidas.</li>
+            <li>Revisiones y Verificaciones de Estados y Documentos Contables.</li>
+            <li>Revisiones y Verificaciones de hechas concretos.</li>
+            <li>Administraciones Concursales.</li>
+            <li>Pruebas Periciales.</li>
+            <li>Peritaciones Judiciales.</li>
+        </ul>
+    </div>
+    
+{% endblock %}

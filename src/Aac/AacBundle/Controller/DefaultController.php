@@ -1,8 +1,14 @@
 <?php
-
+// Aac\AacBundle\Controller\DefaultController.php
 namespace Aac\AacBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Aac\AacBundle\Entity\Contacto;
+use Aac\AacBundle\Form\ContactoType;
 
 class DefaultController extends Controller
 {
@@ -13,16 +19,22 @@ class DefaultController extends Controller
 
     public function inicioAction()
     {
-        //Para acceder a la variable global desde twig seria:
-        //<p>La Variable es: {{ miVariable }}</p>
-        // acceder a los parametros de parameter.yml
-        //$secret = $this->container->getParameter('secret');
-
-        $servicios = $this->get('Servicios');
-        //$pass = $this->get('My_Hash');
-        //$password = $pass->getHash('sha512', '0501120608', $this->container->getParameter('secret'));        
-        //var_dump($password);exit;
-        $parametros['modal'] = $servicios->modalUsuario();
-        return $this->render('AacBundle:Default:inicio.html.twig', $parametros);
+        return $this->render('AacBundle:Default:inicio.html.twig');
     }
+    
+    public function profesionalesAction()
+    {
+        return $this->render('AacBundle:Default:profesionales.html.twig');
+    }
+    
+    public function voluntariosAction()
+    {
+        return $this->render('AacBundle:Default:voluntarios.html.twig');
+    }    
+
+    public function otrosAction()
+    {
+        return $this->render('AacBundle:Default:otros.html.twig');
+    }
+    
 }

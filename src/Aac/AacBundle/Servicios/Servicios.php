@@ -1,9 +1,6 @@
 <?php
+// Aac\AacBundle\Servicios\Servicios.php
 
-/**
- * Description of Hash
- * @author ©-2014 Antonio Lorenzo Esparza 25-jul-2014
- */
 namespace Aac\AacBundle\Servicios;
 
 use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
@@ -63,5 +60,16 @@ class Servicios implements PasswordEncoderInterface
 
         return $modal;
     }        
+	
+    public function modalContacto()
+    {
+        $modal['message'] = '¿ Realmente desea eliminar este CONTACTO ?';
+        $modal['href_cancel'] = 'contacto_lista';
+        $modal['href_action'] = 'contactos_eliminar';
+        $modal['param'] = '';
+        $modal['text_btn'] = 'Eliminar';
+        $modal['url_base'] = '/contacto';
 
+        return $modal;
+    }
 }

@@ -20,17 +20,16 @@ class ArchivoType extends AbstractType{
             ->add('descripcion', 'textarea', array(
                 'attr'      => array('class' => 'col-md-4')    
             ))
-            ->add('para', 'integer', array(
+            ->add('para', 'hidden', array(
                 'attr'      => array('class' => 'col-md-4')
             ));
-
     }    
     
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'Aac\AacBundle\Entity\Archivo',
-            'csrf_protection' => FALSE,
+            'csrf_protection' => true,
             'csrf_field_name' => '_token',
         ));
     }

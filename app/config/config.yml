@@ -100,4 +100,5 @@ fos_user:
         address:        alorenzoesparza@ono.com
         sender_name:    Aac registro de usuarios
 # GregwarCaptchaBundle Configuration
-gregwar_captcha: ~        
+gregwar_captcha: ~
+    

@@ -11,6 +11,9 @@ class RegistrationFormType extends AbstractType
     {
         // add your custom field
         $builder
+            ->add('empresa', 'text', array(
+                'attr'      => array('class' => 'col-md-4')
+            ))            
             ->add('nombre', 'text', array(
                 'attr'      => array('class' => 'col-md-4')
             ))
@@ -19,10 +22,11 @@ class RegistrationFormType extends AbstractType
                 'required'  => FALSE,
             ))
             ->add('captcha', 'captcha', array(
-                'width' => 100,
-                'height' => 25,
-                'length' => 5,
-                'quality'=> 100,
+                    'width'         =>  100,
+                    'height'        =>  30,
+                    'length'        =>  5,
+                    'quality'       =>  500,
+                    'distortion'    =>  false
             ));                
     }
 

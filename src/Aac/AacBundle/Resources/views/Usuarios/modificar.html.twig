@@ -8,7 +8,21 @@
     <form action="#" method="post" {{ form_enctype(form) }}>
         {{ form_errors(form) }}
     <div class="form-group col-md-offset-1">
-        {{ form_label(form.nombre, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+        {{ form_label(form.empresa, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+
+            {{ form_widget(form.empresa,  {'attr': {'autofocus': 'autofocus', 'class': 'col-md-3', 
+                                            'name' : "fos_user_registration_form[empresa]"}}) }}
+    </div>
+    {% if form_errors(form.empresa) is not empty %}
+        <div class="col-md-10 col-md-offset-4 alert alert-danger">
+            {{ form_errors(form.empresa) }}
+        </div>
+    {% elseif true %}
+                        
+    {% endif %}
+    <!-- FIN empresa -->
+    <div class="form-group col-md-offset-1">
+        {{ form_label(form.nombre, null, {'label_attr': {'class': 'col-md-1 control-label text-right'}}) }}
 
             {{ form_widget(form.nombre,  {'attr': {'autofocus': 'autofocus', 'class': 'col-md-3', 
                                             'name' : "fos_user_registration_form[nombre]"}}) }}
@@ -18,9 +32,9 @@
             {{ form_errors(form.nombre) }}
         </div>
     {% elseif true %}
-                        
+        <div class="col-md-10 col-md-offset-4"></div>                
     {% endif %}
-    <!-- FIN nombre -->
+    <!-- FIN nombre -->    
     <div class="form-group col-md-offset-1">
         {{ form_label(form.username, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
 
@@ -32,11 +46,11 @@
             {{ form_errors(form.username) }}
         </div>
     {% elseif true %}
-        <div class="col-md-10 col-md-offset-4"></div>                
+                        
     {% endif %}
     <!-- FIN username -->
         <div class="form-group col-md-offset-1">
-        {{ form_label(form.email, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+        {{ form_label(form.email, null, {'label_attr': {'class': 'col-md-1 control-label text-right'}}) }}
 
             {{ form_widget(form.email,  {'attr': {'class': 'col-md-3', 
                                             'name' : "fos_user_registration_form[email]"}}) }}
@@ -50,7 +64,7 @@
     {% endif %}
     <!-- FIN email -->
     <div class="form-group col-md-offset-1">
-        {{ form_label(form.telefono, null, {'label_attr': {'class': 'col-md-2 control-label text-right'}}) }}
+        {{ form_label(form.telefono, null, {'label_attr': {'class': 'col-md-1 control-label text-right'}}) }}
 
             {{ form_widget(form.telefono,  {'attr': {'class': 'col-md-2', 
                                             'name' : "fos_user_registration_form[telefono]"}}) }}
@@ -68,7 +82,6 @@
 
             {{ form_widget(form.roles,  {'attr': {'class': 'col-md-3', 
                                             'name' : "fos_user_registration_form[roles]"}}) }}
-
     </div>
     {% if form_errors(form.roles) is not empty %}
             <div class="col-md-10 col-md-offset-4 alert alert-danger">
@@ -99,6 +112,7 @@
         <div class="input-group date form_date col-md-2"
             data-link-field="dtp_input2" 
             data-date-format="dd-mm-yyyy">
+            
         {{ form_widget(form.credentialsExpireAt,  {'attr': {
                                 'name' : "fos_user_registration_form[credentialsExpireAt]"}}) }}
             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>

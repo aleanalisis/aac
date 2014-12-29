@@ -22,12 +22,32 @@ class UserRepository extends EntityRepository
                 ->getResult();        
     }
    
-    public function buscarBloqueados()
+    public function buscarBloqueados($enabled)
     {
         return $this->_em->createQuery('SELECT u FROM AacUserBundle:User u '
                 . 'WHERE u.enabled = :enabled '
                 . 'ORDER BY u.id ASC')
-                ->setParameter('enabled', 0)
+                ->setParameter('enabled', $enabled)
                 ->getResult();        
+    }
+    
+    public function buscarSeleccionados($data)
+    {
+        //var_dump($data);
+        $order = 'ORDER BY '. 'u.' . $data['ordenar_por'] . ' ' .$data['tipoOrden'];
+        $qb = $this->_em->createQuery('SELECT u FROM AacUserBundle:User u '
+                . 'WHERE u.nivel <= :nivel AND u.enabled = :enabled '
+                . 'AND u.credentialsExpireAt BETWEEN :fdesde AND :fhasta '
+                . $order)
+                ->setParameter('nivel', $data['nivel'])
+                ->setParameter('enabled', $data['activo'])
+                ->setParameter('fdesde', $data['fecha_desde'])
+                ->setParameter('fhasta', $data['fecha_hasta']);
+        //        ->setParameter('ordenar_por', 'u.' . $data['ordenar_por'])
+        //        ->setParameter('tipoOrden', $data['tipoOrden']);
+        
+        
+        $result = $qb->getResult();
+        return $result;
     }    
 }

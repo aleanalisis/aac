@@ -5,10 +5,38 @@ aac/hello:
 aac/inicio:
     path:     /inicio
     defaults: { _controller: AacBundle:Default:inicio }
+aac/servicios/profesionales:
+    path:     /servicios/profesionales
+    defaults: { _controller: AacBundle:Default:profesionales }
+aac/servicios/voluntarios:
+    path:     /servicios/voluntarios
+    defaults: { _controller: AacBundle:Default:voluntarios }
+aac/otros/servicios:
+    path:     /servicios/otros
+    defaults: { _controller: AacBundle:Default:otros }    
+# Controlador Contacto
+contacto:
+    path:     /contacto
+    defaults: { _controller: AacBundle:Contacto:contacto }
+contacto_lista:
+    path:     /contacto/lista
+    defaults: { _controller: AacBundle:Contacto:lista }
+contactos_ver:
+    path:     /contacto/ver/{id}
+    defaults: {_controller: AacBundle:Contacto:ver}
+contactos_eliminar:
+    path:     /contacto/eliminar/{id}
+    defaults: {_controller: AacBundle:Contacto:eliminar}    
 # Controlador Usuarios    
 usuarios:
     path:     /usuarios
     defaults: { _controller: AacBundle:Usuarios:index }
+usuarios_entrada:
+    path:     /usuarios/inicio
+    defaults: { _controller: AacBundle:Usuarios:inicio }    
+usuarios_seleccion:
+    path:     /usuarios/seleccionar
+    defaults: { _controller: AacBundle:Usuarios:imprimir }    
 usuarios_bloqueados:
     path:     /usuarios/bloqueados
     defaults: {_controller: AacBundle:Usuarios:bloqueados}    
@@ -54,5 +82,5 @@ lista_email:
     path:     /email/listado/{id}
     defaults: {_controller: AacBundle:Email:lista}    
 ver_email:
-    path:     /email/{id}
-    defaults: {_controller: AacBundle:Email:index}    
+    path:     /email/ver/{id}
+    defaults: {_controller: AacBundle:Email:ver}    

@@ -1,0 +1,49 @@
+{% extends "::layout_peque.html.twig" %}
+{% block body %}
+
+    {% for type, flashMessage in app.session.flashbag.all() %}
+        <div class="alert alert-{{ type }} fade in">
+            <button class="close" data-dismiss="alert" type="button">×</button>
+            {% if flashMessage.title is defined %}
+            <strong>{{ flashMessage.title }}</strong>
+            <br>
+            {{ flashMessage.message }}
+            <audio src="{{asset('bundles/aac/sonidos/' ~ type ~ '.wav')}}" type="audio/wav" autoplay="true">
+            {% else %}
+            {{ type }}
+            {% endif %}
+        </div>
+    {% endfor %}
+        <div id="servicios_cabecera">
+            Otros Servicios Profesionales
+        </div>
+        <div class="col-md-12">
+        <hr>
+        </div>    
+    <div id="servicios" class="col-md-8 col-md-offset-2">
+        
+        <ul>
+            <li>Planificación de la organización contable y administrativa.</li>
+            <li>Análisis y estudios de costos.</li>
+            <li>Informes económico-financieros en relación con la situación de la Empresa.</li>
+            <li>Estudio y asesoramiento en cuestiones financieras, comerciales o contables.</li>
+            <li>Valoración de Empresas.</li>
+            <li>Planificación y asesoramiento en presupuestos económico-financieros.</li>
+            <li>Organización y administración de Empresas.</li>
+            <li>Control interno.</li>
+            <li>Planificación y control de gestión.</li>
+            <li>Planes de viabilidad.</li>
+            <li>Estudios, análisis y diagnósticos económico-financieros.</li>
+            <li>Dirección y realización de cantabilidades.</li>
+            <li>Revisiones constantes y periódicas de contabilidades.</li>
+            <li>Revisión de las obligaciones fiscales, laborales o mercantiles.</li>
+            <li>Consultoria gerencial.</li>
+            <li>Estudio de mercados.</li>
+            <li>Formación técnica y selección de personal.</li>
+            <li>Planificación y gestión financiera, fiscal y operativa.</li>
+            <li>Y en general, el estudio, asesoramiento y dirección de los problemas relacionados
+                con la contabilidad y administración de la Empresa.</li>
+        </ul>
+    </div>
+    
+{% endblock %}

@@ -1,7 +1,5 @@
 <?php
-/**
- * Description of ArchivoController
- */
+// Aac\AacBundle\Controller\ArchivoController.php
 
 namespace Aac\AacBundle\Controller;
 
@@ -23,6 +21,17 @@ class ArchivoController extends Controller{
 
     public function indexAction(Request $request)
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_REGISTRADO')){
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'NO AUTORIZADO!',
+                    'message' => 'No estás autorizado para entrar en esta sección'
+                )
+            );            
+            return $this->render('AacBundle:Default:index.html.twig');
+        }
+
         $servicios = $this->get('Servicios');
         // Recuperar datos del usuario logeado
         $user = $this->getUser();
@@ -41,6 +50,7 @@ class ArchivoController extends Controller{
             $this->get('session')->getFlashBag()->set(
                 'danger',
                 array(
+                    'title' => 'ERROR!',
                     'message' => 'No existe ningún archivo para este usuario.'
                 )
             );            
@@ -72,7 +82,16 @@ class ArchivoController extends Controller{
 
     public function subirAction(Request $request)
     {
-        $servicios = $this->get('Servicios');
+        if (false === $this->get('security.context')->isGranted('ROLE_REGISTRADO')){
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'NO AUTORIZADO!',
+                    'message' => 'No estás autorizado para entrar en esta sección'
+                )
+            );            
+            return $this->render('AacBundle:Default:index.html.twig');
+        }
         // Recuperar datos del usuario logeado
         $user = $this->getUser();
         $idUser = $user->getId();
@@ -125,14 +144,22 @@ class ArchivoController extends Controller{
      
         $parametros['form'] = $form->createView();
         $parametros['lista'] = $lista;
-        $parametros['modal'] = $servicios->modalArchivo();
         $parametros['titulo'] = 'Subir Archivos';
         return $this->render('AacBundle:Archivos:add.html.twig', $parametros);        
     }
     
     public function eliminarAction($id)
     {
-        
+        if (false === $this->get('security.context')->isGranted('ROLE_INTERVENTOR')){
+            $this->get('session')->getFlashBag()->set(
+                'danger',
+                array(
+                    'title' => 'NO AUTORIZADO!',
+                    'message' => 'No estás autorizado para entrar en esta sección'
+                )
+            );            
+            return $this->render('AacBundle:Default:index.html.twig');
+        }        
         $em = $this->getDoctrine()->getManager();
         $archivo = $em->getRepository('AacBundle:Archivo')->find($id);
 
