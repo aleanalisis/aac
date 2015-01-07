@@ -118,6 +118,44 @@ tr.grisclaro{
     background-color: #e2e2e2;    
 }
 
+.escalade0a1{
+    
+    animation-name: escalade0a1;-webkit-animation-name: escalade0a1;
+    animation-timing-function: linear;-webkit-animation-timing-function: linear;
+    animation-iteration-count: 1;-webkit-animation-iteration-count: 1;
+    animation-duration: 7s;-webkit-animation-duration: 7s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+}
+@keyframes escalade0a1 {
+  from {
+    -moz-transform: scale(0);
+  }
+  to {
+    
+    -moz-transform: scale(1);
+  }
+  
+}
+
+@-webkit-keyframes escalade0a1 {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+    
+}
+.escalade1a0{
+    
+    animation-name: escalade1a0;-webkit-animation-name: escalade1a0;
+    animation-timing-function: linear;-webkit-animation-timing-function: linear;
+    animation-iteration-count: 1;-webkit-animation-iteration-count: 1;
+    animation-duration: 5s;-webkit-animation-duration: 5s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+}
 .iniciorotar{
     
     animation-name: iniciorotar;-webkit-animation-name: iniciorotar;
@@ -147,6 +185,32 @@ tr.grisclaro{
   }
     
 }
+@keyframes escalade1a0 {
+  from {
+    -moz-transform: scale(1,1);
+  }
+  to {
+    
+    -moz-transform: scale(1,0);
+  }
+  
+}
+
+@-webkit-keyframes escalade1a0 {
+  from {
+    -webkit-transform: scale(1,1);
+  }
+  to {
+    -webkit-transform: scale(1,0);
+  }
+    
+}
+
+.parar{
+    -moz-transform: scale(0);
+    -webkit-transform: scale(0);
+}
+
 #servicios_cabecera{
     //color: #9c0e1b;
     color: #e7e7e7;

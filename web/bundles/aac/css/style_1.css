@@ -1,4 +1,3 @@
-// Fondo Pagina
 body {
     background: rgb(188,3,37); /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover,  rgba(188,3,37,1) 0%, rgba(71,0,10,1) 100%); /* FF3.6+ */
@@ -9,37 +8,13 @@ body {
     background: radial-gradient(ellipse at center,  rgba(188,3,37,1) 0%,rgba(71,0,10,1) 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bc0325', endColorstr='#47000a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     color: #fff;
-    height: 100%;
-    margin: auto;    
-    padding-bottom: 40px;
+    width: 90%;
     padding-top: 60px;
-    width: 90%;    
+    padding-bottom: 40px;
+    margin: auto;
+    height: 100%;
 }
-// Tablas correcciones Bootstrap
-.table .table {
-  background-color: #c11a1f;
-}
-.table-striped > tbody > tr:nth-child(odd) > td,
-.table-striped > tbody > tr:nth-child(odd) > th {
-    background-color: #710003;
-}
-.table-hover > tbody > tr:hover > td,
-.table-hover > tbody > tr:hover > th {
-    color: #ffffff;
-    background-color: #a90000;
-}
-.table > tbody > tr > .active,
-.table > tbody > .active > td,
-.table > tbody > .active > th {
-    background-color: #c11a1f;
-}
-tr.gris {
-    background-color: #a9a9a9;
-}
-tr.grisclaro{
-    background-color: #e2e2e2;    
-}
-// Fin Tablas
+
 .menu-izq {
   position: relative;
   float: left;
@@ -74,26 +49,20 @@ tr.grisclaro{
 .cabecera_3{
     color: #fff; 
     font-family: Almendra;
+    font-style: italic;
+    font-weight: 700;    
     margin-top: 32px;
 }
 .cabecera_31{
-    font-family: Alegreya;
     font-size: 1.4em;
-    font-weight: bold;    
     color: #f2f0d8;
     margin-top: 32px;
     float: right;
 }
-.cabecera_31peque{
-    font-family: Alegreya;
-    font-size: 1.4em;
-    font-weight: bold;    
-    color: #f2f0d8;
-    margin-top: 32px;
-}
 .cabecera_32{
     color: #fff;
     font-family: Alegreya;
+    font-weight: 700;    
     font-weight: bold; 
     font-size: 2.0em; 
     float: left; 
@@ -119,9 +88,36 @@ tr.grisclaro{
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#a3a3a3',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     color: #031599;    
     font-family: Alegreya;
+    font-weight: 700;    
     font-size: 1.4em;
     font-weight: bold;
 }
+
+// Tablas correcciones Bootstrap
+.table .table {
+  background-color: #c11a1f;
+}
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #710003;
+}
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+    color: #ffffff;
+    background-color: #a90000;
+}
+.table > tbody > tr > .active,
+.table > tbody > .active > td,
+.table > tbody > .active > th {
+    background-color: #c11a1f;
+}
+tr.gris {
+    background-color: #a9a9a9;
+}
+tr.grisclaro{
+    background-color: #e2e2e2;    
+}
+
 .iniciorotar{
     
     animation-name: iniciorotar;-webkit-animation-name: iniciorotar;
@@ -151,17 +147,22 @@ tr.grisclaro{
   }
     
 }
-
 #servicios_cabecera{
+    //color: #9c0e1b;
     color: #e7e7e7;
-    font-family: Almendra; 
+    font-family: Almendra;
+    font-style: italic;
+    font-weight: 700;    
     font-size: 3.0em;
     font-weight: bold; 
     text-align: center;
+
 }
 
 #servicios{
-    font-family: Almendra; 
+    font-family: Almendra;
+    font-style: italic;
+    font-weight: 700;
     font-weight: bold;
     height: 700px;
     background: rgb(242,242,242); /* Old browsers */
@@ -184,10 +185,12 @@ tr.grisclaro{
 
 #servicios ol{
     list-style-type: lower-alpha;
-    margin-left: 20px;
+    margin-left: 25px;
     text-align: justify;
 }
 
 #servicios p{
     margin-left: 10px;
 }
+
+  

@@ -5,6 +5,8 @@ namespace Aac\UserBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\True;
+
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -21,13 +23,20 @@ class RegistrationFormType extends AbstractType
                 'attr'      => array('class' => 'col-md-2'),
                 'required'  => FALSE,
             ))
-            ->add('captcha', 'captcha', array(
-                    'width'         =>  100,
-                    'height'        =>  30,
-                    'length'        =>  5,
-                    'quality'       =>  500,
-                    'distortion'    =>  false
-            ));                
+            ->add('recaptcha', 'ewz_recaptcha', array(
+                'attr'          =>  array(
+                'options'       => array(
+                                'theme' => 'light',
+                                'type'  => 'image'
+                    )
+                ),
+                'label_attr'    =>  array('class'   =>  'col-md-2 control-label text-right'),
+                'label'         =>  'Captcha : ',    
+                'mapped'      => false,
+                'constraints' => array(
+                new True()
+                )                    
+            ));               
     }
 
     public function getParent()

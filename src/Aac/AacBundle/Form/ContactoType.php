@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use EWZ\Bundle\RecaptchaBundle\Validator\Constraints\True;
+
 class ContactoType extends AbstractType{
     
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -56,14 +58,19 @@ class ContactoType extends AbstractType{
                     'label_attr'    =>  array('class'   =>  'col-md-2 control-label text-right'),
                     'label'         =>  'Texto : '                    
                 ))
-                ->add('captcha', 'captcha', array(
+                ->add('recaptcha', 'ewz_recaptcha', array(
+                    'attr'          =>  array(
+                    'options'       => array(
+                                    'theme' => 'light',
+                                    'type'  => 'image'
+                        )
+                    ),
                     'label_attr'    =>  array('class'   =>  'col-md-2 control-label text-right'),
-                    'label'         =>  'Captcha : ',
-                    'width'         =>  100,
-                    'height'        =>  30,
-                    'length'        =>  5,
-                    'quality'       =>  500,
-                    'distortion'    =>  false
+                    'label'         =>  'Captcha : ',    
+                    'mapped'      => false,
+                    'constraints' => array(
+                    new True()
+                    )                    
                 ));
     }
     

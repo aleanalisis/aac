@@ -35,8 +35,40 @@ jQuery(document).ready(function() {
             $('#seleccionado').hide();
         }
     });
+// Rotar el logo 
+    
+    setTimeout(iniciar, 8000);
+    
+    function iniciar(){
+        var animationEvent = whichAnimationEvent();
+        $('#rotar').addClass("iniciorotar");
+        $('#rotar').on(animationEvent,
+                        function(event) {
+                $('#rotar').removeClass("iniciorotar");
+                $('#rotar').off(animationEvent);
+                //window.location.reload(true);
+                setTimeout(iniciar, 8000);
+        });
+    }
+    function whichAnimationEvent(){
+        var t,
+            el = document.createElement("fakeelement");
 
-// Funcion datetimepicker
+        var animations = {
+          "animation"      : "animationend",
+          "OAnimation"     : "oAnimationEnd",
+          "MozAnimation"   : "animationend",
+          "WebkitAnimation": "webkitAnimationEnd"
+        }
+
+        for (t in animations){
+          if (el.style[t] !== undefined){
+            return animations[t];
+          }
+        }
+    }
+
+//Funcion datetimepicker
     $('.form_datetime').datetimepicker({
         language:  'es',
         weekStart: 1,

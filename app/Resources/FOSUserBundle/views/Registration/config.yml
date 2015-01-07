@@ -69,6 +69,7 @@ swiftmailer:
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
+    port:      "2525"
     spool:     { type: memory }
 # knp_paginator Configuration    
 knp_paginator:
@@ -97,11 +98,5 @@ fos_user:
         confirmation:
             enabled:    true
     from_email:
-        address:        alorenzoesparza@ono.com
-        sender_name:    Aac registro de usuarios
-# EWZRecaptchaBundle Configuration
-ewz_recaptcha:
-    public_key:  6Lew7v8SAAAAAHRMqqNv6I_em_ySSbnSxyW3zT-7
-    private_key: 6Lew7v8SAAAAAJF-8WfmaQPit2WGPxORIvJUtqA4
-    locale_key:  %kernel.default_locale%
-    
+        address:        aac_registro@aacvalencia.es
+        sender_name:    Aac registro de usuarios            

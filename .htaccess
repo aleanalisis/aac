@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+    #RewriteCond %{HTTP_HOST} ^aacvalencia.es$ [NC,OR]
+    #RewriteCond %{HTTP_HOST} ^www.aacvalencia.es$
+    RewriteCond %{REQUEST_URI} !^/web/.*$
+    RewriteRule ^(.*)$ /web/$1 [QSA,L]
+    # Explicitly disable rewriting for front controllers
+    #RewriteRule ^app_dev.php - [L]
+    RewriteRule ^web/app.php - [L]
+ 
+    RewriteCond %{REQUEST_FILENAME} !-f
+ 
+    # Change below before deploying to production
+    #RewriteRule ^(.*)$ /app.php [QSA,L]
+    RewriteRule ^(.*)$ /web/app.php [QSA,L]
+    #ErrorDocument 500 http://www.aacvalencia.es/500.html
+</IfModule>

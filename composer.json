@@ -20,7 +20,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "knplabs/knp-paginator-bundle": "~2.4",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "gregwar/captcha-bundle": "dev-master"
+        "excelwebzone/recaptcha-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -73,13 +73,15 @@
     <!-- FIN texto -->
     <br>
     <div class="form-group col-md-offset-1">
-        {{ form_label(form.captcha) }}
-        <br><br><br><br><br><br><br><br><br><br><br><br><br>
-            {{ form_widget(form.captcha) }}
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        {{ form_label(form.recaptcha) }}
+    <div class="form-group col-md-offset-2">    
+            {{ form_widget(form.recaptcha) }}
     </div>
-    {% if form_errors(form.captcha) is not empty %}
+    </div>
+    {% if form_errors(form.recaptcha) is not empty %}
         <div class="col-md-10 col-md-offset-4 alert alert-danger">
-            {{ form_errors(form.captcha) }}
+            {{ form_errors(form.recaptcha) }}
         </div>
     {% elseif true %}
         <div class="col-md-10 col-md-offset-4"></div>                

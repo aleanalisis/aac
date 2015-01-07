@@ -37,9 +37,21 @@ jQuery(document).ready(function() {
     });
 // Rotar el logo 
     
-    setTimeout(iniciar, 8000);
+    setTimeout(iniciar,0);
     
     function iniciar(){
+        var animationEvent = whichAnimationEvent();
+        $('#rotar').removeClass("parar");
+        $('#rotar').addClass("escalade0a1");
+        $('#rotar').on(animationEvent,
+                        function(event) {
+                $('#rotar').removeClass("escalade0a1");
+                $('#rotar').off(animationEvent);
+                //window.location.reload(true);
+                setTimeout(rotando, 5000);
+        });
+    }
+    function rotando(){
         var animationEvent = whichAnimationEvent();
         $('#rotar').addClass("iniciorotar");
         $('#rotar').on(animationEvent,
@@ -47,9 +59,21 @@ jQuery(document).ready(function() {
                 $('#rotar').removeClass("iniciorotar");
                 $('#rotar').off(animationEvent);
                 //window.location.reload(true);
-                setTimeout(iniciar, 8000);
+                setTimeout(atras, 2000);
         });
-    }
+    }    
+    function atras(){
+        var animationEvent = whichAnimationEvent();
+        $('#rotar').addClass("escalade1a0");
+        $('#rotar').on(animationEvent,
+                        function(event) {
+                $('#rotar').removeClass("escalade1a0");
+                $('#rotar').addClass("parar");
+                $('#rotar').off(animationEvent);
+                //window.location.reload(true);
+                setTimeout(iniciar, 2000);
+        });
+    }    
     function whichAnimationEvent(){
         var t,
             el = document.createElement("fakeelement");
